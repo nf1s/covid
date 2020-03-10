@@ -3,8 +3,7 @@
 
 """
 
-from covid import Covid
-
+import covid
 
 if __name__ == "__main__":
-    Covid().data
+    print(covid.data())

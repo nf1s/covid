@@ -14,6 +14,7 @@ twine = "*"
 mkdocs = "*"
 mkdocs-material = "*"
 pydantic = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.7"
