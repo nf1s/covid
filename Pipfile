@@ -5,10 +5,15 @@ verify_ssl = true
 
 [dev-packages]
 pre-commit = "*"
+ipython = "*"
+flake8 = "*"
 
 [packages]
 requests = "*"
 twine = "*"
+mkdocs = "*"
+mkdocs-material = "*"
+pydantic = "*"
 
 [requires]
 python_version = "3.7"
