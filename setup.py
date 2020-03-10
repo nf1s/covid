@@ -5,7 +5,7 @@ from setuptools import setup
 with open("README.md") as f:
     long_description = f.read()
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 setup(
     name="covid",
@@ -18,7 +18,7 @@ setup(
     author_email="ahmed.nafies@gmail.com",
     license="MIT",
     packages=["covid"],
-    install_requires=["requests"],
+    install_requires=["requests", "pydantic"],
     project_urls={
         "Documentation": "https://ahmednafies.github.io/covid/",
         "Source": "https://github.com/ahmednafies/covid",
