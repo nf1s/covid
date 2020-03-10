@@ -4,6 +4,8 @@
 
 Python SDK to get information regarding the novel corona virus provided by Johns Hopkins university
 
+Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
+
 ## How to install
 
     pip install covid
