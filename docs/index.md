@@ -4,6 +4,8 @@
 
 Python SDK to get information regarding the novel corona virus provided by Johns Hopkins university
 
+![corona.jpeg](img/corona.jpeg)
+
 Full code on [github](https://github.com/ahmednafies/covid)
 
 ## How to install
