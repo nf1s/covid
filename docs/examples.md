@@ -31,7 +31,6 @@ result
 ### Get Status By Country
 
     sweden_cases = covid.get_status_by_country("sweden")
-    print(sweden_cases)
 
 result
 
@@ -52,7 +51,6 @@ when using `get_status_by_country`, eg. "The Republic of Moldova" or just "Moldo
 So use this when you need to know the country exact name that you can use.
 
     countries = covid.list_countries()
-    print(countries)
 
 result
 
