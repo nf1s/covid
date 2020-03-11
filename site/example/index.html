@@ -36,7 +36,7 @@
     
     
       
-        <title>Full Example - Covid</title>
+        <title>Examples - Covid</title>
       
     
     
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#how-to-use-full-example" tabindex="0" class="md-skip">
+      <a href="#get-all-data" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Full Example
+                Examples
               
             </span>
           
@@ -209,11 +209,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Full Example
+        Examples
       </label>
     
-    <a href="./" title="Full Example" class="md-nav__link md-nav__link--active">
-      Full Example
+    <a href="./" title="Examples" class="md-nav__link md-nav__link--active">
+      Examples
     </a>
     
       
@@ -225,22 +225,44 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-full-example" class="md-nav__link">
-    How to use (full example)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#result" class="md-nav__link">
-    result
+  <a href="#get-all-data" class="md-nav__link">
+    Get All Data
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#get-status-by-country" class="md-nav__link">
+    Get Status By Country
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-countries" class="md-nav__link">
+    List Countries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-total-confirmed-cases" class="md-nav__link">
+    Get Total Confirmed cases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-total-recovered-cases" class="md-nav__link">
+    Get Total Recovered cases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-total-deaths" class="md-nav__link">
+    Get Total Deaths
+  </a>
   
 </li>
       
@@ -274,22 +296,44 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-full-example" class="md-nav__link">
-    How to use (full example)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#result" class="md-nav__link">
-    result
+  <a href="#get-all-data" class="md-nav__link">
+    Get All Data
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#get-status-by-country" class="md-nav__link">
+    Get Status By Country
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-countries" class="md-nav__link">
+    List Countries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-total-confirmed-cases" class="md-nav__link">
+    Get Total Confirmed cases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-total-recovered-cases" class="md-nav__link">
+    Get Total Recovered cases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-total-deaths" class="md-nav__link">
+    Get Total Deaths
+  </a>
   
 </li>
       
@@ -310,14 +354,15 @@
               
                 
                 
-                  <h1>Full Example</h1>
+                  <h1>Examples</h1>
                 
-                <h2 id="how-to-use-full-example">How to use (full example)</h2>
-<pre><code>import covid
+                <h3 id="get-all-data">Get All Data</h3>
+<pre><code>from covid import Covid
 
-covid.data()
+covid = Covid()
+covid.get_data()
 </code></pre>
-<h3 id="result">result</h3>
+<p>result</p>
 <pre><code>[
     {
         'country': 'Mainland China',
@@ -338,6 +383,46 @@ covid.data()
         'last_update': 1583777591000
     },
     ...
+</code></pre>
+<h3 id="get-status-by-country">Get Status By Country</h3>
+<pre><code>sweden_cases = covid.get_status_by_country("sweden")
+print(sweden_cases)
+</code></pre>
+<p>result</p>
+<pre><code>{
+    'country': 'Sweden',
+    'confirmed': 355,
+    'deaths': 0,
+    'recovered': 1,
+    'latitude': 63.0,
+    'longitude': 16.0,
+    'last_update': 1583893094000
+}
+</code></pre>
+<h3 id="list-countries">List Countries</h3>
+<p>This comes in handy when you need to know the available names of countries
+when using <code>get_status_by_country</code>, eg. "The Republic of Moldova" or just "Moldova"
+So use this when you need to know the country exact name that you can use.</p>
+<pre><code>countries = covid.list_countries()
+print(countries)
+</code></pre>
+<p>result</p>
+<pre><code>[
+    "china",
+    "italy",
+    "iran",
+    "republic of korea",
+    ...
+]
+</code></pre>
+<h3 id="get-total-confirmed-cases">Get Total Confirmed cases</h3>
+<pre><code>confirmed = covid.get_total_confirmed_cases()
+</code></pre>
+<h3 id="get-total-recovered-cases">Get Total Recovered cases</h3>
+<pre><code>recovered = covid.get_total_recovered()
+</code></pre>
+<h3 id="get-total-deaths">Get Total Deaths</h3>
+<pre><code>deaths = covid.get_total_deaths()
 </code></pre>
                 
                   
