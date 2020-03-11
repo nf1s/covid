@@ -2,7 +2,7 @@ site_name: Covid
 nav:
   - Getting Started: index.md
   - Install: install.md
-  - Examples: example.md
+  - Examples: examples.md
 theme:
   name: "material"
   palette:
