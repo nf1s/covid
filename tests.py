@@ -2,11 +2,13 @@
 """ tests module
 """
 
-import covid
+from covid import Covid
+from covid import COUNTRY_MAP
 
 
-def test_data():
-    data = covid.data()
+def test_all_data():
+    covid = Covid()
+    data = covid.get_data()
     assert data is not None
     assert type(data) == list
     element = data[0]
@@ -17,3 +19,41 @@ def test_data():
     assert "latitude" in element
     assert "longitude" in element
     assert "last_update" in element
+
+
+def test_get_by_country():
+    covid = Covid()
+    data = covid.get_status_by_country("sweden")
+    assert type(data) is dict
+    assert "country" in data
+    assert "confirmed" in data
+    assert "deaths" in data
+    assert "recovered" in data
+    assert "latitude" in data
+    assert "longitude" in data
+    assert "last_update" in data
+    assert data["country"] == "Sweden"
+
+
+def test_total_confirmed_cases():
+    covid = Covid()
+    data = covid.get_total_confirmed_cases()
+    assert type(data) is int
+
+
+def test_total_deaths():
+    covid = Covid()
+    data = covid.get_total_deaths()
+    assert type(data) is int
+
+
+def test_total_recovered():
+    covid = Covid()
+    data = covid.get_total_recovered()
+    assert type(data) is int
+
+
+def test_list_countries():
+    covid = Covid()
+    countries = covid.list_countries()
+    assert countries == list(COUNTRY_MAP.keys())

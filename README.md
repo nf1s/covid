@@ -8,6 +8,10 @@ Python SDK to get information regarding the novel corona virus provided by Johns
 
 Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
 
+## Requirements
+
+    python >= 3.6
+
 ## How to install
 
     pip install covid
@@ -19,11 +23,14 @@ Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
 
 ## How to use
 
-    import covid
+### Get All Data
 
-    covid.data()
+    from covid import Covid
 
-### result
+    covid = Covid()
+    print(covid.data())
+
+#### Result
 
     [
         {
@@ -45,3 +52,51 @@ Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
             'last_update': 1583777591000
         },
         ...
+
+### Get Status By Country
+
+    sweden_cases = covid.get_status_by_country("sweden")
+    print(sweden_cases)
+
+#### Result
+
+    {
+        'country': 'Sweden',
+        'confirmed': 355,
+        'deaths': 0,
+        'recovered': 1,
+        'latitude': 63.0,
+        'longitude': 16.0,
+        'last_update': 1583893094000
+    }
+
+### List Countries
+
+This comes in handy when you need to know the available names of countries
+when using `get_status_by_country`, eg. "The Republic of Moldova" or just "Moldova"
+So use this when you need to know the country exact name that you can use.
+
+    countries = covid.list_countries()
+    print(countries)
+
+#### Result
+
+    [
+        "china",
+        "italy",
+        "iran",
+        "republic of korea",
+        ...
+    ]
+
+### Get Total Confirmed cases
+
+    confirmed = covid.get_total_confirmed_cases()
+
+### Get Total Recovered cases
+
+    recovered = covid.get_total_recovered()
+
+### Get Total Deaths
+
+    deaths = covid.get_total_deaths()
