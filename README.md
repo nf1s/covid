@@ -8,6 +8,10 @@ Python SDK to get information regarding the novel corona virus provided by Johns
 
 Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
 
+## Requirements
+
+    python >= 3.6
+
 ## How to install
 
     pip install covid
