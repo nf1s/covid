@@ -23,6 +23,7 @@ Full code on [github](https://github.com/ahmednafies/covid)
 
 ## How to use
 
-    import covid
+    from covid import Covid
 
-    covid.data()
+    covid = Covid()
+    covid.get_data()

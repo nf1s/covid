@@ -23,7 +23,7 @@ Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
 
 ## How to use
 
-### Fetch all data
+### Get All Data
 
     from covid import Covid
 
@@ -93,7 +93,7 @@ So use this when you need to know the country exact name that you can use.
 
     confirmed = covid.get_total_confirmed_cases()
 
-### Get Total Confirmed cases
+### Get Total Recovered cases
 
     recovered = covid.get_total_recovered()
 
