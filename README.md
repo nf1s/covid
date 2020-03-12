@@ -28,7 +28,7 @@ Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
     from covid import Covid
 
     covid = Covid()
-    print(covid.data())
+    covid.get_data()
 
 #### Result
 
@@ -56,7 +56,6 @@ Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
 ### Get Status By Country
 
     sweden_cases = covid.get_status_by_country("sweden")
-    print(sweden_cases)
 
 #### Result
 
@@ -77,7 +76,6 @@ when using `get_status_by_country`, eg. "The Republic of Moldova" or just "Moldo
 So use this when you need to know the country exact name that you can use.
 
     countries = covid.list_countries()
-    print(countries)
 
 #### Result
 
