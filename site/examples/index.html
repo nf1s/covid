@@ -229,12 +229,18 @@
     Get All Data
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-status-by-country" class="md-nav__link">
-    Get Status By Country
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    Result
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -242,6 +248,59 @@
   <a href="#list-countries" class="md-nav__link">
     List Countries
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result_1" class="md-nav__link">
+    Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-status-by-country-id" class="md-nav__link">
+    Get Status By Country ID
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result_2" class="md-nav__link">
+    Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-status-by-country-name" class="md-nav__link">
+    Get Status By Country Name
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result_3" class="md-nav__link">
+    Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -300,12 +359,18 @@
     Get All Data
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-status-by-country" class="md-nav__link">
-    Get Status By Country
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    Result
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -313,6 +378,59 @@
   <a href="#list-countries" class="md-nav__link">
     List Countries
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result_1" class="md-nav__link">
+    Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-status-by-country-id" class="md-nav__link">
+    Get Status By Country ID
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result_2" class="md-nav__link">
+    Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-status-by-country-name" class="md-nav__link">
+    Get Status By Country Name
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result_3" class="md-nav__link">
+    Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -362,7 +480,7 @@
 covid = Covid()
 covid.get_data()
 </code></pre>
-<p>result</p>
+<h4 id="result">Result</h4>
 <pre><code>[
     {
         'country': 'Mainland China',
@@ -384,13 +502,26 @@ covid.get_data()
     },
     ...
 </code></pre>
-<h3 id="get-status-by-country">Get Status By Country</h3>
-<pre><code>sweden_cases = covid.get_status_by_country("sweden")
+<h3 id="list-countries">List Countries</h3>
+<p>This comes in handy when you need to know the available names of countries
+when using <code>get_status_by_country</code>, eg. "The Republic of Moldova" or just "Moldova"
+So use this when you need to know the country exact name that you can use.</p>
+<pre><code>countries = covid.list_countries()
 </code></pre>
-<p>result</p>
+<h4 id="result_1">Result</h4>
+<pre><code>[
+    {'id': '40', 'country': 'China'},
+    {'id': '93', 'country': 'Italy'}
+    ...
+]
+</code></pre>
+<h3 id="get-status-by-country-id">Get Status By Country ID</h3>
+<pre><code>italy_cases = covid.get_status_by_country_id(93)
+</code></pre>
+<h4 id="result_2">Result</h4>
 <pre><code>{
-    'country': 'Sweden',
-    'confirmed': 355,
+    'country': 'Italy',
+    'confirmed': 10000,
     'deaths': 0,
     'recovered': 1,
     'latitude': 63.0,
@@ -398,20 +529,19 @@ covid.get_data()
     'last_update': 1583893094000
 }
 </code></pre>
-<h3 id="list-countries">List Countries</h3>
-<p>This comes in handy when you need to know the available names of countries
-when using <code>get_status_by_country</code>, eg. "The Republic of Moldova" or just "Moldova"
-So use this when you need to know the country exact name that you can use.</p>
-<pre><code>countries = covid.list_countries()
+<h3 id="get-status-by-country-name">Get Status By Country Name</h3>
+<pre><code>italy_cases = covid.get_status_by_country_name("italy")
 </code></pre>
-<p>result</p>
-<pre><code>[
-    "china",
-    "italy",
-    "iran",
-    "republic of korea",
-    ...
-]
+<h4 id="result_3">Result</h4>
+<pre><code>{
+    'country': 'Italy',
+    'confirmed': 10000,
+    'deaths': 0,
+    'recovered': 1,
+    'latitude': 63.0,
+    'longitude': 16.0,
+    'last_update': 1583893094000
+}
 </code></pre>
 <h3 id="get-total-confirmed-cases">Get Total Confirmed cases</h3>
 <pre><code>confirmed = covid.get_total_confirmed_cases()

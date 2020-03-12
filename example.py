@@ -18,5 +18,8 @@ if __name__ == "__main__":
     countries = covid.list_countries()
     print(f"countries: {countries}")
 
-    sweden_cases = covid.get_status_by_country("sweden")
-    print(f"sweden_cases: {sweden_cases}")
+    cases = covid.get_status_by_country_id(40)
+    print(f"cases: {cases}")
+
+    cases = covid.get_status_by_country_name("sweden")
+    print(f"cases: {cases}")

@@ -5,7 +5,7 @@
     covid = Covid()
     covid.get_data()
 
-result
+#### Result
 
     [
         {
@@ -28,22 +28,6 @@ result
         },
         ...
 
-### Get Status By Country
-
-    sweden_cases = covid.get_status_by_country("sweden")
-
-result
-
-    {
-        'country': 'Sweden',
-        'confirmed': 355,
-        'deaths': 0,
-        'recovered': 1,
-        'latitude': 63.0,
-        'longitude': 16.0,
-        'last_update': 1583893094000
-    }
-
 ### List Countries
 
 This comes in handy when you need to know the available names of countries
@@ -52,15 +36,45 @@ So use this when you need to know the country exact name that you can use.
 
     countries = covid.list_countries()
 
-result
+#### Result
 
     [
-        "china",
-        "italy",
-        "iran",
-        "republic of korea",
+        {'id': '40', 'country': 'China'},
+        {'id': '93', 'country': 'Italy'}
         ...
     ]
+
+### Get Status By Country ID
+
+    italy_cases = covid.get_status_by_country_id(93)
+
+#### Result
+
+    {
+        'country': 'Italy',
+        'confirmed': 10000,
+        'deaths': 0,
+        'recovered': 1,
+        'latitude': 63.0,
+        'longitude': 16.0,
+        'last_update': 1583893094000
+    }
+
+### Get Status By Country Name
+
+    italy_cases = covid.get_status_by_country_name("italy")
+
+#### Result
+
+    {
+        'country': 'Italy',
+        'confirmed': 10000,
+        'deaths': 0,
+        'recovered': 1,
+        'latitude': 63.0,
+        'longitude': 16.0,
+        'last_update': 1583893094000
+    }
 
 ### Get Total Confirmed cases
 
