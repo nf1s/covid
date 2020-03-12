@@ -3,7 +3,6 @@
 """
 
 from covid import Covid
-from covid import COUNTRY_MAP
 
 
 def test_all_data():
@@ -21,9 +20,26 @@ def test_all_data():
     assert "last_update" in element
 
 
-def test_get_by_country():
+def test_get_by_country_id():
     covid = Covid()
-    data = covid.get_status_by_country("sweden")
+    countries = covid.list_countries()
+    country = filter(lambda country: country["name"] == "Sweden", countries)
+    country = next(country)
+    data = covid.get_status_by_country_id(country["id"])
+    assert type(data) is dict
+    assert "country" in data
+    assert "confirmed" in data
+    assert "deaths" in data
+    assert "recovered" in data
+    assert "latitude" in data
+    assert "longitude" in data
+    assert "last_update" in data
+    assert data["country"] == "Sweden"
+
+
+def test_get_by_country_name():
+    covid = Covid()
+    data = covid.get_status_by_country_name("sweden")
     assert type(data) is dict
     assert "country" in data
     assert "confirmed" in data
@@ -56,4 +72,4 @@ def test_total_recovered():
 def test_list_countries():
     covid = Covid()
     countries = covid.list_countries()
-    assert countries == list(COUNTRY_MAP.keys())
+    assert type(countries) == list
