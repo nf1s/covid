@@ -2,7 +2,7 @@
 """ Covid coronavirus statistics based on John Hopkins University statisticks
 
 """
-from urllib.parse import urlparse
+from urllib.parse import ParseResult, urlparse, urlencode
 
 import requests
 from pydantic import BaseModel, Field
@@ -44,10 +44,26 @@ class Covid:
         Returns:
             str: URL for getting all Covid data
         """
-        url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
-        url += "?f=json&where=Confirmed > 0&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*"
-        url += "&orderByFields=Confirmed desc&resultOffset=0&resultRecordCount=200&cacheHint=true"
-        url = urlparse(url)
+        url = urlparse("https://services1.arcgis.com")
+        path = "/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
+        query = {}
+        query["f"] = "json"
+        query["where"] = "Confirmed > 0"
+        query["returnGeometry"] = "false"
+        query["spatialRel"] = "esriSpatialRelIntersects"
+        query["outFields"] = "*"
+        query["orderByFields"] = "Confirmed desc"
+        query["resultOffset"] = "0"
+        query["resultRecordCount"] = "200"
+        query["cacheHint"] = "true"
+        url = ParseResult(
+            scheme=url.scheme,
+            netloc=url.hostname,
+            path=path,
+            query=urlencode(query),
+            params=url.params,
+            fragment=url.fragment,
+        )
         return url.geturl()
 
     @staticmethod
@@ -60,10 +76,25 @@ class Covid:
         Returns:
             str: Formatted encoded URL for the requested country
         """
-        url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
-        url += f"?f=json&where=OBJECTID = {object_id}&returnGeometry=false&spatialRel=esriSpatialRelIntersects"
-        url += "&outFields=*&resultOffset=0&resultRecordCount=1&cacheHint=true"
-        url = urlparse(url)
+        url = urlparse("https://services1.arcgis.com")
+        path = "/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
+        query = {}
+        query["f"] = "json"
+        query["where"] = f"OBJECTID = {object_id}"
+        query["returnGeometry"] = "false"
+        query["spatialRel"] = "esriSpatialRelIntersects"
+        query["outFields"] = "*"
+        query["resultOffset"] = "0"
+        query["resultRecordCount"] = "1"
+        query["cacheHint"] = "true"
+        url = ParseResult(
+            scheme=url.scheme,
+            netloc=url.hostname,
+            path=path,
+            query=urlencode(query),
+            params=url.params,
+            fragment=url.fragment,
+        )
         return url.geturl()
 
     @staticmethod
@@ -76,14 +107,30 @@ class Covid:
         Returns:
             str: Formatted encoded URL for the requested case
         """
-        url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
-        url += "?f=json&where=Confirmed > 0&returnGeometry=false&spatialRel=esriSpatialRelIntersects"
-        url += (
-            '&outFields=*&outStatistics=[{"statisticType":"sum","onStatisticField":"'
+        url = urlparse("https://services1.arcgis.com")
+        path = "/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
+        query = {}
+        query["f"] = "json"
+        query["where"] = "Confirmed > 0"
+        query["returnGeometry"] = "false"
+        query["spatialRel"] = "esriSpatialRelIntersects"
+        query["outFields"] = "*"
+        query["outStatistics"] = (
+            '[{"statisticType":"sum","onStatisticField":"'
             + case
-            + '","outStatisticFieldName":"value"}]&cacheHint=true'
+            + '","outStatisticFieldName":"value"}]'
         )
-        url = urlparse(url)
+
+        query["cacheHint"] = "true"
+
+        url = ParseResult(
+            scheme=url.scheme,
+            netloc=url.hostname,
+            path=path,
+            query=urlencode(query),
+            params=url.params,
+            fragment=url.fragment,
+        )
         return url.geturl()
 
     def __get_total_by_case(self, case: str) -> int:
