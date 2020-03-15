@@ -35,6 +35,7 @@ flake8 = "^3.7.9"
 ipython = "^7.13.0"
 pre-commit = "^2.2.0"
 ipdb = "^0.13.2"
+black = {version = "^19.10b0", allow-prereleases = true}
 
 [tool.black]
 line-length = 79
