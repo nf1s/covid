@@ -1,3 +1,41 @@
+[tool.poetry]
+name = "covid"
+version = "1.1.0"
+description = "Python SDK to get information regarding the novel corona virus provided by Johns Hopkins university"
+
+license = "MIT"
+
+authors = [
+    "Ahmed Nafies"
+]
+
+readme = 'README.md'  # Markdown files are supported
+
+repository = "https://github.com/ahemdnafies/covid"
+homepage = "https://ahmednafies.github.io/covid/"
+
+keywords = ['packaging', 'covid']
+
+[tool.poetry.dependencies]
+python = "^3.7 || ^3.8"  # Compatible python versions must be declared here
+toml = "^0.9"
+# Dependencies with extras
+
+
+requests = "^2.23.0"
+twine = "^3.1.1"
+mkdocs = "^1.1"
+mkdocs-material = "^4.6.3"
+pydantic = "^1.4"
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+coverage = "^5.0.3"
+mypy = "^0.770"
+flake8 = "^3.7.9"
+ipython = "^7.13.0"
+pre-commit = "^2.2.0"
+ipdb = "^0.13.2"
+
 [tool.black]
 line-length = 79
 target_version = ['py37']
