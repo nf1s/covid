@@ -13,6 +13,18 @@ jobs:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+    - restore_cache:
+        key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
+      - run:
+          command: |
+            sudo pip install poetry
+            poetry install
+      - save_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.7/site-packages"
       - run:
           name: Run Tests
           command: |
