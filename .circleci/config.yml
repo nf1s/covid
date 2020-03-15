@@ -1,6 +1,8 @@
 version: 2.1 # use CircleCI 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
+  poetry: frameio/poetry@0.13.2
+
 jobs:
   build:
     working_directory: ~/covid
@@ -11,18 +13,6 @@ jobs:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-      #   - restore_cache:
-      #       key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
-      - run:
-          command: |
-            sudo pip install poetry
-            poetry install
-      - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
-          paths:
-            - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python3.7/site-packages"
       - run:
           name: Run Tests
           command: |
