@@ -9,22 +9,26 @@
 
     [
         {
-            'country': 'Mainland China',
-            'confirmed': 80756,
-            'deaths': 3136,
-            'recovered': 60096,
+            'id': '53',
+            'country': 'China',
+            'confirmed': 81020,
+            'active': 9960,
+            'deaths': 3217,
+            'recovered': 67843,
             'latitude': 30.5928,
             'longitude': 114.3055,
-            'last_update': 1582264984000
+            'last_update': 1584097775000
         },
         {
+            'id': '115',
             'country': 'Italy',
-            'confirmed': 9172,
-            'deaths': 463,
-            'recovered': 724,
-            'latitude': 43.0,
-            'longitude': 12.0,
-            'last_update': 1583777591000
+            'confirmed': 24747,
+            'active': 20603,
+            'deaths': 1809,
+            'recovered': 2335,
+            'latitude': 41.8719,
+            'longitude': 12.5674,
+            'last_update': 1584318130000
         },
         ...
 
@@ -39,25 +43,27 @@ So use this when you need to know the country exact name that you can use.
 #### Result
 
     [
-        {'id': '40', 'country': 'China'},
-        {'id': '93', 'country': 'Italy'}
+        {'id': '53', 'country': 'China'},
+        {'id': '115', 'country': 'Italy'}
         ...
     ]
 
 ### Get Status By Country ID
 
-    italy_cases = covid.get_status_by_country_id(93)
+    italy_cases = covid.get_status_by_country_id(115)
 
 #### Result
 
     {
+        'id': '115',
         'country': 'Italy',
-        'confirmed': 10000,
-        'deaths': 0,
-        'recovered': 1,
-        'latitude': 63.0,
-        'longitude': 16.0,
-        'last_update': 1583893094000
+        'confirmed': 24747,
+        'active': 20603,
+        'deaths': 1809,
+        'recovered': 2335,
+        'latitude': 41.8719,
+        'longitude': 12.5674,
+        'last_update': 1584318130000
     }
 
 ### Get Status By Country Name
@@ -67,13 +73,15 @@ So use this when you need to know the country exact name that you can use.
 #### Result
 
     {
+        'id': '115',
         'country': 'Italy',
-        'confirmed': 10000,
-        'deaths': 0,
-        'recovered': 1,
-        'latitude': 63.0,
-        'longitude': 16.0,
-        'last_update': 1583893094000
+        'confirmed': 24747,
+        'active': 20603,
+        'deaths': 1809,
+        'recovered': 2335,
+        'latitude': 41.8719,
+        'longitude': 12.5674,
+        'last_update': 1584318130000
     }
 
 ### Get Total Confirmed cases
