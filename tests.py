@@ -29,6 +29,7 @@ def test_get_by_country_id():
     assert type(data) is dict
     assert "country" in data
     assert "confirmed" in data
+    assert "active" in data
     assert "deaths" in data
     assert "recovered" in data
     assert "latitude" in data
@@ -43,6 +44,7 @@ def test_get_by_country_name():
     assert type(data) is dict
     assert "country" in data
     assert "confirmed" in data
+    assert "active" in data
     assert "deaths" in data
     assert "recovered" in data
     assert "latitude" in data
