@@ -16,6 +16,7 @@ class CovidModel(BaseModel):
     id: str = Field(..., alias="OBJECTID")
     country: str = Field(..., alias="Country_Region")
     confirmed: int = Field(..., alias="Confirmed")
+    active: int = Field(..., alias="Active")
     deaths: int = Field(..., alias="Deaths")
     recovered: int = Field(..., alias="Recovered")
     latitude: float = Field(..., alias="Lat")
@@ -157,15 +158,16 @@ class Covid:
                 example:
                         [
                             {
-                                'id': 1,
-                                'country': 'Mainland China',
-                                'confirmed': 80756,
-                                'deaths': 3136,
-                                'recovered': 60096,
+                                'id': '53',
+                                'country': 'China',
+                                'confirmed': 81020,
+                                'active': 9960,
+                                'deaths': 3217,
+                                'recovered': 67843,
                                 'latitude': 30.5928,
                                 'longitude': 114.3055,
-                                'last_update': 1582264984000
-                            },
+                                'last_update': 1584097775000
+                            }
         """
 
         response = requests.get(self.__all_url()).json()
@@ -227,6 +229,7 @@ class Covid:
                     {
                         'country': 'Sweden',
                         'confirmed': 355,
+                        'active': 334,
                         'deaths': 0,
                         'recovered': 1,
                         'latitude': 63.0,
@@ -255,6 +258,7 @@ class Covid:
                     {
                         'country': 'Sweden',
                         'confirmed': 355,
+                        'active': 334,
                         'deaths': 0,
                         'recovered': 1,
                         'latitude': 63.0,
