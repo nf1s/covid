@@ -183,6 +183,14 @@ class Covid:
         cases = self.get_all_cases()
         return [CovidModel(**case["attributes"]).dict() for case in cases]
 
+    def get_total_active_cases(self) -> int:
+        """Method fetches and returns total number of active cases
+        
+        Returns:
+            int: Total number of active at this time
+        """
+        return self.__get_total_by_case("Active")
+
     def get_total_deaths(self) -> int:
         """Method fetches and returns total deaths number
         
