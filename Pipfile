@@ -8,7 +8,6 @@ flake8 = "*"
 ipython = "*"
 pre-commit = "*"
 ipdb = "*"
-black = "*"
 
 [packages]
 requests = "*"
