@@ -53,6 +53,12 @@ def test_get_by_country_name():
     assert data["country"] == "Sweden"
 
 
+def test_total_active_cases():
+    covid = Covid()
+    data = covid.get_total_active_cases()
+    assert type(data) is int
+
+
 def test_total_confirmed_cases():
     covid = Covid()
     data = covid.get_total_confirmed_cases()
