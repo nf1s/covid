@@ -12,5 +12,5 @@ deploy:
 install:
 	pipenv install
 
-docs:
+deploy-docs:
 	mkdocs gh-deploy
