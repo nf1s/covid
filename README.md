@@ -111,7 +111,7 @@ So use this when you need to know the country exact name that you can use.
 
 ### Get Total Active cases
 
-    confirmed = covid.get_total_active_cases()
+    active = covid.get_total_active_cases()
 
 ### Get Total Confirmed cases
 
