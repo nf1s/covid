@@ -1,13 +1,16 @@
 test:
-	poetry run pytest tests.py
+	pipenv run pytest tests.py
 
 test-coverage:
-	poetry run coverage run -m pytest tests.py
-	poetry run coverage report
+	pipenv run coverage run -m pytest tests.py
+	pipenv run coverage report
 
 deploy:
-	poetry run python setup.py sdist
-	poetry run twine upload dist/*
+	pipenv run python setup.py sdist
+	pipenv run twine upload dist/*
 
 install:
-	poetry install
+	pipenv install
+
+docs:
+	mkdocs gh-deploy
