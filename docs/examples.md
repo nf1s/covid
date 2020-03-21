@@ -84,6 +84,10 @@ So use this when you need to know the country exact name that you can use.
         'last_update': 1584318130000
     }
 
+### Get Total Active cases
+
+    confirmed = covid.get_total_active_cases()
+
 ### Get Total Confirmed cases
 
     confirmed = covid.get_total_confirmed_cases()
