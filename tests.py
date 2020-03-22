@@ -53,6 +53,21 @@ def test_get_by_country_name():
     assert data["country"] == "Sweden"
 
 
+def test_get_by_country_name_initials():
+    covid = Covid()
+    data = covid.get_status_by_country_name("US")
+    assert type(data) is dict
+    assert "country" in data
+    assert "confirmed" in data
+    assert "active" in data
+    assert "deaths" in data
+    assert "recovered" in data
+    assert "latitude" in data
+    assert "longitude" in data
+    assert "last_update" in data
+    assert data["country"] == "US"
+
+
 def test_total_active_cases():
     covid = Covid()
     data = covid.get_total_active_cases()

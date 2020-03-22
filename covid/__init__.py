@@ -274,8 +274,14 @@ class Covid:
                         'last_update': 1583893094000
                     }
         """
+        country_name = (
+            country_name.title()
+            if len(country_name) > 3
+            else country_name.upper()
+        )
+
         country = filter(
-            lambda country: country["name"] == country_name.title(),
+            lambda country: country["name"] == country_name,
             self.list_countries(),
         )
         country = next(country)
