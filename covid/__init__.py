@@ -274,17 +274,18 @@ class Covid:
                         'last_update': 1583893094000
                     }
         """
-        country_name = (
-            country_name.title()
-            if len(country_name) > 3
-            else country_name.upper()
-        )
 
         country = filter(
-            lambda country: country["name"] == country_name,
+            lambda country: country["name"].lower() == country_name.lower(),
             self.list_countries(),
         )
-        country = next(country)
+        try:
+            country = next(country)
+        except StopIteration:
+            raise ValueError(
+                f"There is country called '{country_name}', to check availabe country names use `list_countries()`"
+            )
+
         url = self.__country_url(country["id"])
         response = requests.get(url).json()
 

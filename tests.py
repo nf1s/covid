@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """ tests module
 """
-
+import pytest
 from covid import Covid
 
 
@@ -66,6 +66,12 @@ def test_get_by_country_name_initials():
     assert "longitude" in data
     assert "last_update" in data
     assert data["country"] == "US"
+
+
+def test_get_by_country_invalid_name():
+    covid = Covid()
+    with pytest.raises(ValueError):
+        covid.get_status_by_country_name("USA")
 
 
 def test_total_active_cases():
