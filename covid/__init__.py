@@ -283,7 +283,7 @@ class Covid:
             country = next(country)
         except StopIteration:
             raise ValueError(
-                f"There is country called '{country_name}', to check availabe country names use `list_countries()`"
+                f"There is no country called '{country_name}', to check available country names use `list_countries()`"
             )
 
         url = self.__country_url(country["id"])
