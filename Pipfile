@@ -19,6 +19,7 @@ pydantic = "*"
 pytest = "*"
 coverage = "*"
 beautifulsoup4 = "*"
+inflection = "*"
 
 [requires]
 python_version = "3.7"
