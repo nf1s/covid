@@ -8,6 +8,7 @@ flake8 = "*"
 ipython = "*"
 pre-commit = "*"
 ipdb = "*"
+black = "*"
 
 [packages]
 requests = "*"
@@ -17,6 +18,10 @@ mkdocs-material = "*"
 pydantic = "*"
 pytest = "*"
 coverage = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
