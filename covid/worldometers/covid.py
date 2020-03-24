@@ -4,7 +4,6 @@
 """
 import requests
 from bs4 import BeautifulSoup
-from inflection import underscore
 from .models import CovidModel
 
 URL = "https://www.worldometers.info/coronavirus/"
@@ -35,18 +34,18 @@ class Covid:
         )
         self._data = {country[0].lower(): country for country in countries}
 
-    def _format(self, _list):
+    def _format(self, _list: list) -> list:
         _list = [val.strip().replace(",", "") for val in _list]
         return [val if val else 0 for val in _list]
 
-    def get_data(self):
+    def get_data(self) -> list:
 
         return [
             CovidModel(**dict(zip(self._headers, self._format(val)))).dict()
             for val in self._data.values()
         ]
 
-    def get_status_by_country_name(self, country_name):
+    def get_status_by_country_name(self, country_name) -> dict:
         try:
             country_data = dict(
                 zip(
@@ -60,23 +59,23 @@ class Covid:
             )
         return CovidModel(**country_data).dict()
 
-    def list_countries(self):
+    def list_countries(self) -> list:
         return list(self._data.keys())
 
     @staticmethod
-    def _to_num(string):
+    def _to_num(string) -> int:
         return int(string.strip().replace(",", ""))
 
-    def get_total_confirmed_cases(self):
+    def get_total_confirmed_cases(self) -> int:
         return self._to_num(self._total_cases[0].span.text)
 
-    def get_total_deaths(self):
+    def get_total_deaths(self) -> int:
         return self._to_num(self._total_cases[1].span.text)
 
-    def get_total_recovered(self):
+    def get_total_recovered(self) -> int:
         return self._to_num(self._total_cases[2].span.text)
 
-    def get_total_active_cases(self):
+    def get_total_active_cases(self) -> int:
         confirmed = self.get_total_confirmed_cases()
         deaths = self.get_total_deaths()
         recovered = self.get_total_recovered()
