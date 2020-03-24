@@ -1,3 +1,12 @@
+by default `Covid` uses John Hopkins univeristy API as default
+so you can use:
+
+    covid = Covid(source="john_hopkins")
+
+or
+
+    covid = Covid()
+
 ### Get All Data
 
     from covid import Covid
@@ -5,7 +14,7 @@
     covid = Covid()
     covid.get_data()
 
-#### Result
+result
 
     [
         {
@@ -35,12 +44,12 @@
 ### List Countries
 
 This comes in handy when you need to know the available names of countries
-when using `get_status_by_country`, eg. "The Republic of Moldova" or just "Moldova"
+when using `get_status_by_country_name`, eg. "The Republic of Moldova" or just "Moldova"
 So use this when you need to know the country exact name that you can use.
 
     countries = covid.list_countries()
 
-#### Result
+result
 
     [
         {'id': '53', 'country': 'China'},
@@ -52,7 +61,7 @@ So use this when you need to know the country exact name that you can use.
 
     italy_cases = covid.get_status_by_country_id(115)
 
-#### Result
+result
 
     {
         'id': '115',
@@ -70,7 +79,7 @@ So use this when you need to know the country exact name that you can use.
 
     italy_cases = covid.get_status_by_country_name("italy")
 
-#### Result
+result
 
     {
         'id': '115',
