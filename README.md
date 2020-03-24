@@ -9,6 +9,8 @@ by Johns Hopkins university and worldometers.info
 
 Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
 
+![corona.jpeg](docs/img/corona.jpeg)
+
 ## Requirements
 
     python >= 3.6
