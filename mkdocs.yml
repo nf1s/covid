@@ -2,7 +2,8 @@ site_name: Covid
 nav:
   - Getting Started: index.md
   - Install: install.md
-  - Examples: examples.md
+  - John Hopkins University API: john_hopkins.md
+  - Worldometers.info (New): worldometers.md
 theme:
   name: "material"
   palette:
