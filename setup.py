@@ -5,7 +5,7 @@ from setuptools import setup
 with open("README.md") as f:
     long_description = f.read()
 
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 
 setup(
     name="covid",
