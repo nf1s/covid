@@ -10,7 +10,7 @@ VERSION = "2.0.0"
 setup(
     name="covid",
     version=VERSION,
-    description="Python SDK to get information regarding the novel corona virus provided by Johns Hopkins university",
+    description="Python SDK to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://ahmednafies.github.io/covid/",
