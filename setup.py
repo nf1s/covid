@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup
+from setuptools import find_packages
 
 with open("README.md") as f:
     long_description = f.read()
 
-VERSION = "2.0.1"
+VERSION = "2.0.2"
 
 setup(
     name="covid",
@@ -17,8 +18,8 @@ setup(
     author="Ahmed Nafies",
     author_email="ahmed.nafies@gmail.com",
     license="MIT",
-    packages=["covid"],
-    install_requires=["requests", "pydantic"],
+    packages=find_packages("covid"),
+    install_requires=["requests", "pydantic", "beautifulsoup4"],
     project_urls={
         "Documentation": "https://ahmednafies.github.io/covid/",
         "Source": "https://github.com/ahmednafies/covid",
