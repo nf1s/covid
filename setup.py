@@ -19,6 +19,8 @@ setup(
     author_email="ahmed.nafies@gmail.com",
     license="MIT",
     packages=find_packages("covid"),
+    package_dir={"": "covid"},
+    # include_package_data=True,
     install_requires=["requests", "pydantic", "beautifulsoup4"],
     project_urls={
         "Documentation": "https://ahmednafies.github.io/covid/",
