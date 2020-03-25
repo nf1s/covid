@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
+import io
+import re
 
 from setuptools import setup
 
-with open("README.md") as f:
+with io.open("README.md") as f:
     long_description = f.read()
 
-VERSION = "2.0.4"
+with io.open("covid/__init__.py", "rt", encoding="utf8") as f:
+    version = re.search(r'__version__ = "(.*?)"', f.read()).group(1)
 
 setup(
     name="covid",
-    version=VERSION,
+    version=version,
     description="Python SDK to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,6 +22,18 @@ setup(
     license="MIT",
     packages=["covid", "covid.john_hopkins", "covid.worldometers"],
     install_requires=["requests", "pydantic", "beautifulsoup4"],
+    extras_require={
+        "dev": [
+            "pipenv",
+            "pytest",
+            "coverage",
+            "flake8",
+            "ipdb",
+            "pre-commit",
+            "black",
+        ],
+        "docs": ["mkdocs", "mkdocs-material"],
+    },
     project_urls={
         "Documentation": "https://ahmednafies.github.io/covid/",
         "Source": "https://github.com/ahmednafies/covid",
