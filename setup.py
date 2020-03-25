@@ -6,7 +6,7 @@ from setuptools import find_packages
 with open("README.md") as f:
     long_description = f.read()
 
-VERSION = "2.0.2"
+VERSION = "2.0.3"
 
 setup(
     name="covid",
@@ -18,9 +18,7 @@ setup(
     author="Ahmed Nafies",
     author_email="ahmed.nafies@gmail.com",
     license="MIT",
-    packages=find_packages("covid"),
-    package_dir={"": "covid"},
-    # include_package_data=True,
+    packages=["covid", "covid.john_hopkins", "covid.worldometers"],
     install_requires=["requests", "pydantic", "beautifulsoup4"],
     project_urls={
         "Documentation": "https://ahmednafies.github.io/covid/",
