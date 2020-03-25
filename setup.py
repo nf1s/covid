@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup
-from setuptools import find_packages
 
 with open("README.md") as f:
     long_description = f.read()
 
-VERSION = "2.0.3"
+VERSION = "2.0.4"
 
 setup(
     name="covid",
