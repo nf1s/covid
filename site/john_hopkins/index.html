@@ -55,7 +55,7 @@
     <label class="md-overlay" for="__drawer"></label>
     
       
-      <a href="#get-all-data" class="md-skip" data-md-component="skip">
+      <a href="#check-the-source" class="md-skip" data-md-component="skip">
         Skip to content
       </a>
     
@@ -209,6 +209,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#check-the-source" class="md-nav__link">
+    Check the Source
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#get-all-data" class="md-nav__link">
     Get All Data
   </a>
@@ -307,6 +314,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#check-the-source" class="md-nav__link">
+    Check the Source
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#get-all-data" class="md-nav__link">
     Get All Data
   </a>
@@ -382,10 +396,16 @@
                 
                 <p>by default <code>Covid</code> uses John Hopkins univeristy API as default
 so you can use:</p>
-<pre><code>covid = Covid(source="john_hopkins")
+<pre><code>covid = Covid()
 </code></pre>
 <p>or</p>
-<pre><code>covid = Covid()
+<pre><code>covid = Covid(source="john_hopkins")
+</code></pre>
+<h3 id="check-the-source">Check the Source</h3>
+<pre><code>covid.source
+</code></pre>
+<p>result</p>
+<pre><code>"john_hopkins"
 </code></pre>
 <h3 id="get-all-data">Get All Data</h3>
 <pre><code>from covid import Covid

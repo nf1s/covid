@@ -1,5 +1,13 @@
     covid = Covid(source="worldometers")
 
+### Check the Source
+
+    covid.source
+
+result
+
+    "worldometers"
+
 ### Get Data
 
     covid.get_data()

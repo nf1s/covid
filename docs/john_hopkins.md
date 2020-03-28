@@ -1,11 +1,19 @@
 by default `Covid` uses John Hopkins univeristy API as default
 so you can use:
 
-    covid = Covid(source="john_hopkins")
+    covid = Covid()
 
 or
 
-    covid = Covid()
+    covid = Covid(source="john_hopkins")
+
+### Check the Source
+
+    covid.source
+
+result
+
+    "john_hopkins"
 
 ### Get All Data
 
