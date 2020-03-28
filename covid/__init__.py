@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
-from .john_hopkins import Covid as JohnHopkinsCovid
-from .worldometers import Covid as WorldometersCovid
+from covid.john_hopkins import Covid as JohnHopkinsCovid
+from covid.worldometers import Covid as WorldometersCovid
+from covid import config
 
 __author__ = "Ahmed Nafies Okasha Mohamed <ahmed.nafies@gmail.com>"
 __copyright__ = "Copyright 2020, Ahmed Nafies Okasha Mohamed"
 __license__ = "MIT"
-__version__ = "2.0.5"
+__version__ = "2.0.6"
 
 
-def Covid(source="john_hopkins"):
-    if source == "worldometers":
+def Covid(source=config.JOHN_HOPKINS):
+    if source == config.JOHN_HOPKINS:
+        return JohnHopkinsCovid()
+
+    if source == config.WORLDOMETERS:
         return WorldometersCovid()
-    return JohnHopkinsCovid()
+
+    return ValueError(f"Allowed sources are {','.join(config.SOURCES)}")
