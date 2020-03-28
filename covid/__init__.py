@@ -16,4 +16,4 @@ def Covid(source=config.JOHN_HOPKINS):
     if source == config.WORLDOMETERS:
         return WorldometersCovid()
 
-    return ValueError(f"Allowed sources are {','.join(config.SOURCES)}")
+    raise ValueError(f"Allowed sources are {', '.join(config.SOURCES)}")
