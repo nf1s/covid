@@ -3,18 +3,24 @@
 
 """
 from urllib.parse import ParseResult, urlparse, urlencode
-from .models import CovidModel, CountryModel
+from covid.john_hopkins.models import CovidModel, CountryModel
 import requests
-
+from covid import config
 
 URL = "https://services1.arcgis.com"
-PATH = "/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
+PATH = (
+    "/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
+)
+SOURCE = config.JOHN_HOPKINS
 
 
 class Covid:
     """Class handells all functionality
 
     """
+
+    def __init__(self):
+        self.source = SOURCE
 
     @staticmethod
     def __all_url() -> str:

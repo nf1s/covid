@@ -1,0 +1,4 @@
+JOHN_HOPKINS = "john_hopkins"
+WORLDOMETERS = "worldometers"
+
+SOURCES = [JOHN_HOPKINS, WORLDOMETERS]

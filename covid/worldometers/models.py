@@ -12,11 +12,15 @@ class CovidModel(BaseModel):
     """
 
     country: str = Field(..., alias="Country,Other")
-    confirmed: int = Field(..., alias="TotalCases")
-    new_cases: int = Field(..., alias="NewCases")
-    deaths: int = Field(..., alias="TotalDeaths")
-    recovered: int = Field(..., alias="TotalRecovered")
-    active: int = Field(..., alias="ActiveCases")
-    critical: int = Field(None, alias="Serious,Critical")
-    total_cases_per_million: Decimal = Field(..., alias="TotCases/1M pop")
-    total_deaths_per_million: Decimal = Field(..., alias="TotDeaths/1M pop")
+    confirmed: int = Field(0, alias="TotalCases")
+    new_cases: int = Field(0, alias="NewCases")
+    deaths: int = Field(0, alias="TotalDeaths")
+    recovered: int = Field(0, alias="TotalRecovered")
+    active: int = Field(0, alias="ActiveCases")
+    critical: int = Field(0, alias="Serious,Critical")
+    total_cases_per_million: Decimal = Field(
+        Decimal(0), alias="TotCases/1M pop"
+    )
+    total_deaths_per_million: Decimal = Field(
+        Decimal(0), alias="Deaths/1M pop"
+    )
