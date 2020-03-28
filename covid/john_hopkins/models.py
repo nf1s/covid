@@ -12,13 +12,13 @@ class CovidModel(BaseModel):
 
     id: str = Field(..., alias="OBJECTID")
     country: str = Field(..., alias="Country_Region")
-    confirmed: int = Field(..., alias="Confirmed")
-    active: int = Field(..., alias="Active")
-    deaths: int = Field(..., alias="Deaths")
-    recovered: int = Field(..., alias="Recovered")
+    confirmed: int = Field(0, alias="Confirmed")
+    active: int = Field(0, alias="Active")
+    deaths: int = Field(0, alias="Deaths")
+    recovered: int = Field(0, alias="Recovered")
     latitude: float = Field(..., alias="Lat")
     longitude: float = Field(..., alias="Long_")
-    last_update: int = Field(..., alias="Last_Update")
+    last_update: int = Field(0, alias="Last_Update")
 
 
 class CountryModel(BaseModel):
