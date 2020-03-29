@@ -1,3 +1,5 @@
+![john_hopkins.png](img/john_hopkins.png)
+
 by default `Covid` uses John Hopkins univeristy API as default
 so you can use:
 

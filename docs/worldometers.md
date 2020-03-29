@@ -1,3 +1,5 @@
+![worldometers.png](img/worldometers.png)
+
     covid = Covid(source="worldometers")
 
 ### Check the Source

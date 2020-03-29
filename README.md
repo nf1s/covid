@@ -26,6 +26,10 @@ Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
 
 ## How to use
 
+## John Hopkins University API
+
+![john_hopkins](docs/img/john_hopkins.png)
+
 ### Get All Data
 
     from covid import Covid
@@ -129,6 +133,8 @@ So use this when you need to know the country exact name that you can use.
     deaths = covid.get_total_deaths()
 
 ## Getting data from Worldometers.info (New)
+
+![worldometers](docs/img/worldometers.png)
 
     covid = Covid(source="worldometers")
 
