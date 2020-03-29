@@ -3,6 +3,13 @@
 """
 import pytest
 from covid import Covid
+from unittest.mock import patch
+
+
+class MockRequestData:
+    @staticmethod
+    def json():
+        return {"key": "value"}
 
 
 def test_all_data():
@@ -102,3 +109,45 @@ def test_list_countries():
     covid = Covid()
     countries = covid.list_countries()
     assert type(countries) == list
+
+
+@patch("covid.john_hopkins.covid.requests.get", return_value=MockRequestData())
+def test_exception_rasied_on_get_total_active_cases(mock):
+    covid = Covid()
+    with pytest.raises(Exception):
+        covid.get_total_active_cases()
+
+
+@patch("covid.john_hopkins.covid.requests.get", return_value=MockRequestData())
+def test_exception_rasied_on_get_total_confirmed_cases(mock):
+    covid = Covid()
+    with pytest.raises(Exception):
+        covid.get_total_confirmed_cases()
+
+
+@patch("covid.john_hopkins.covid.requests.get", return_value=MockRequestData())
+def test_exception_rasied_on_get_total_recovered(mock):
+    covid = Covid()
+    with pytest.raises(Exception):
+        covid.get_total_recovered()
+
+
+@patch("covid.john_hopkins.covid.requests.get", return_value=MockRequestData())
+def test_exception_rasied_on_total_deaths(mock):
+    covid = Covid()
+    with pytest.raises(Exception):
+        covid.get_total_deaths()
+
+
+@patch("covid.john_hopkins.covid.requests.get", return_value=MockRequestData())
+def test_exception_rasied_on_get_country_by_id(mock):
+    covid = Covid()
+    with pytest.raises(Exception):
+        covid.get_status_by_country_id(50)
+
+
+@patch("covid.john_hopkins.covid.requests.get", return_value=MockRequestData())
+def test_exception_rasied_on_get_country_by_name(mock):
+    covid = Covid()
+    with pytest.raises(Exception):
+        covid.get_status_by_country_name("italy")

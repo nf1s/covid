@@ -14,38 +14,40 @@ SOURCE = config.WORLDOMETERS
 
 class Covid:
     def __init__(self):
-        self._url = URL
-        self._data = {}
-        self._fetch()
-        self._set_data()
+        self.__url = URL
+        self.__data = {}
+        self.__fetch()
+        self.__set_data()
         self.source = SOURCE
 
-    def _fetch(self):
+    def __fetch(self):
         """Method get all data when the class is inistantiated
             1. parses html
             2. gets all country data
         """
-        response = requests.get(self._url)
+        response = requests.get(self.__url)
         soup = BeautifulSoup(response.text, "html.parser")
         table = soup.find("table", attrs={"class": "main_table_countries"})
         headers = table.find_all("th")
-        self._headers = [header.text.replace("\xa0", "") for header in headers]
-        self._rows = table.tbody.find_all("tr")
-        self._total_cases = soup.find_all(
+        self.__headers = [
+            header.text.replace("\xa0", "") for header in headers
+        ]
+        self.__rows = table.tbody.find_all("tr")
+        self.__total_cases = soup.find_all(
             "div", attrs={"class": "maincounter-number"}
         )
 
-    def _set_data(self):
+    def __set_data(self):
         """Method formats data to make it easily callable by country name
         """
 
         countries = (
             [attr.text.strip() for attr in row if attr != "\n"]
-            for row in self._rows
+            for row in self.__rows
         )
-        self._data = {country[0].lower(): country for country in countries}
+        self.__data = {country[0].lower(): country for country in countries}
 
-    def _format(self, _list: list) -> list:
+    def __format(self, _list: list) -> list:
         """Method formats a list and returns a fomatted one
         1. removes ','
         2. if there is no value it adds 0
@@ -67,8 +69,8 @@ class Covid:
         """
 
         return [
-            CovidModel(**dict(zip(self._headers, self._format(val)))).dict()
-            for val in self._data.values()
+            CovidModel(**dict(zip(self.__headers, self.__format(val)))).dict()
+            for val in self.__data.values()
         ]
 
     def get_status_by_country_name(self, country_name: str) -> dict:
@@ -86,8 +88,8 @@ class Covid:
         try:
             country_data = dict(
                 zip(
-                    self._headers,
-                    self._format(self._data[country_name.lower()]),
+                    self.__headers,
+                    self.__format(self.__data[country_name.lower()]),
                 )
             )
         except KeyError:
@@ -97,10 +99,10 @@ class Covid:
         return CovidModel(**country_data).dict()
 
     def list_countries(self) -> list:
-        return list(self._data.keys())
+        return list(self.__data.keys())
 
     @staticmethod
-    def _to_num(string: str) -> int:
+    def __to_num(string: str) -> int:
         """formats string numbers and converts them to an integer
         e.g '123,456' -> 123456
         
@@ -118,7 +120,7 @@ class Covid:
         Returns:
             int: Number of confirmed cases
         """
-        return self._to_num(self._total_cases[0].span.text)
+        return self.__to_num(self.__total_cases[0].span.text)
 
     def get_total_deaths(self) -> int:
         """Method gets the total number of deaths
@@ -126,7 +128,7 @@ class Covid:
         Returns:
             int: Total number of deaths
         """
-        return self._to_num(self._total_cases[1].span.text)
+        return self.__to_num(self.__total_cases[1].span.text)
 
     def get_total_recovered(self) -> int:
         """Method gets the total number of recovered cases
@@ -134,7 +136,7 @@ class Covid:
         Returns:
             int: Total number of recovered cases
         """
-        return self._to_num(self._total_cases[2].span.text)
+        return self.__to_num(self.__total_cases[2].span.text)
 
     def get_total_active_cases(self) -> int:
         """Method gets the total number of active cases

@@ -31,21 +31,26 @@ class Covid:
         """
         url = urlparse(URL)
         path = PATH
-        query = {}
-        query["f"] = "json"
-        query["where"] = "Confirmed > 0"
-        query["returnGeometry"] = "false"
-        query["spatialRel"] = "esriSpatialRelIntersects"
-        query["outFields"] = "*"
-        query["orderByFields"] = "Confirmed desc"
-        query["resultOffset"] = "0"
-        query["resultRecordCount"] = "200"
-        query["cacheHint"] = "true"
+
+        query = urlencode(
+            dict(
+                f="json",
+                where="Confirmed > 0",
+                returnGeometry="false",
+                spatialRel="esriSpatialRelIntersects",
+                outFields="*",
+                orderByFields="Confirmed desc",
+                resultOffset="0",
+                resultRecordCount="200",
+                cacheHint="true",
+            )
+        )
+
         url = ParseResult(
             scheme=url.scheme,
             netloc=url.hostname,
             path=path,
-            query=urlencode(query),
+            query=query,
             params=url.params,
             fragment=url.fragment,
         )
@@ -63,20 +68,25 @@ class Covid:
         """
         url = urlparse(URL)
         path = PATH
-        query = {}
-        query["f"] = "json"
-        query["where"] = f"OBJECTID = {object_id}"
-        query["returnGeometry"] = "false"
-        query["spatialRel"] = "esriSpatialRelIntersects"
-        query["outFields"] = "*"
-        query["resultOffset"] = "0"
-        query["resultRecordCount"] = "1"
-        query["cacheHint"] = "true"
+
+        query = urlencode(
+            dict(
+                f="json",
+                where=f"OBJECTID = {object_id}",
+                returnGeometry="false",
+                spatialRel="esriSpatialRelIntersects",
+                outFields="*",
+                resultOffset="0",
+                resultRecordCount="1",
+                cacheHint="true",
+            )
+        )
+
         url = ParseResult(
             scheme=url.scheme,
             netloc=url.hostname,
             path=path,
-            query=urlencode(query),
+            query=query,
             params=url.params,
             fragment=url.fragment,
         )
@@ -94,25 +104,32 @@ class Covid:
         """
         url = urlparse(URL)
         path = PATH
-        query = {}
-        query["f"] = "json"
-        query["where"] = "Confirmed > 0"
-        query["returnGeometry"] = "false"
-        query["spatialRel"] = "esriSpatialRelIntersects"
-        query["outFields"] = "*"
-        query["outStatistics"] = (
-            '[{"statisticType":"sum","onStatisticField":"'
-            + case
-            + '","outStatisticFieldName":"value"}]'
-        )
 
-        query["cacheHint"] = "true"
+        query = urlencode(
+            dict(
+                f="json",
+                where="Confirmed > 0",
+                returnGeometry="false",
+                spatialRel="esriSpatialRelIntersects",
+                outFields="*",
+                outStatistics=str(
+                    [
+                        {
+                            "statisticType": "sum",
+                            "onStatisticField": f"{case}",
+                            "outStatisticFieldName": "value",
+                        }
+                    ]
+                ),
+                cacheHint="true",
+            )
+        )
 
         url = ParseResult(
             scheme=url.scheme,
             netloc=url.hostname,
             path=path,
-            query=urlencode(query),
+            query=query,
             params=url.params,
             fragment=url.fragment,
         )
@@ -134,7 +151,7 @@ class Covid:
         except KeyError:
             raise Exception(response)
 
-    def get_all_cases(self) -> list:
+    def __get_all_cases(self) -> list:
         """Method fetches all data related to Covid
         
         Returns:
@@ -164,7 +181,7 @@ class Covid:
         """Method fetches all data related to Covid
         """
 
-        cases = self.get_all_cases()
+        cases = self.__get_all_cases()
         return [CovidModel(**case["attributes"]).dict() for case in cases]
 
     def get_total_active_cases(self) -> int:
@@ -206,7 +223,7 @@ class Covid:
         Returns:
             list[str]: list of country names
         """
-        cases = self.get_all_cases()
+        cases = self.__get_all_cases()
         return [CountryModel(**case["attributes"]).dict() for case in cases]
 
     def get_status_by_country_id(self, country_id) -> dict:
@@ -234,7 +251,7 @@ class Covid:
         try:
             case = response["features"][0]["attributes"]
         except KeyError:
-            return Exception(response)
+            raise Exception(response)
 
         return CovidModel(**case).dict()
 
@@ -276,6 +293,6 @@ class Covid:
         try:
             case = response["features"][0]["attributes"]
         except KeyError:
-            return Exception(response)
+            raise Exception(response)
 
         return CovidModel(**case).dict()
