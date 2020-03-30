@@ -1,7 +1,6 @@
 # Covid
 
-[![CircleCI](https://circleci.com/gh/ahmednafies/covid.svg?style=shield)](https://circleci.com/gh/ahmednafies/covid) [![codecov](https://codecov.io/gh/ahmednafies/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/ahmednafies/covid) ![PyPI](https://img.shields.io/pypi/v/covid) ![PyPI - Downloads](https://img.shields.io/pypi/dm/covid) ![license](https://img.shields.io/badge/license-MIT-green)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/ahmednafies/covid) ![GitHub closed issues](https://img.shields.io/github/issues-closed/ahmednafies/covid)
+[![CircleCI](https://circleci.com/gh/ahmednafies/covid.svg?style=shield)](https://circleci.com/gh/ahmednafies/covid) [![codecov](https://codecov.io/gh/ahmednafies/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/ahmednafies/covid) ![license](https://img.shields.io/badge/license-MIT-green)
 
 ## Description
 
