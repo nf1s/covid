@@ -1,6 +1,7 @@
 # Covid
 
-[![CircleCI](https://circleci.com/gh/ahmednafies/covid.svg?style=shield)](https://circleci.com/gh/ahmednafies/covid) [![codecov](https://codecov.io/gh/ahmednafies/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/ahmednafies/covid)
+[![CircleCI](https://circleci.com/gh/ahmednafies/covid.svg?style=shield)](https://circleci.com/gh/ahmednafies/covid) ![CircleCI](https://img.shields.io/circleci/build/github/ahmednafies/covid/master) [![codecov](https://codecov.io/gh/ahmednafies/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/ahmednafies/covid) ![GitHub top language](https://img.shields.io/github/languages/top/ahmednafies/covid) ![PyPI](https://img.shields.io/pypi/v/covid) ![PyPI - Downloads](https://img.shields.io/pypi/dm/covid) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ahmednafies/covid) ![license](https://img.shields.io/badge/license-MIT-green)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/ahmednafies/covid) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/ahmednafies/covid) ![GitHub issues](https://img.shields.io/github/issues/ahmednafies/covid) ![GitHub closed issues](https://img.shields.io/github/issues-closed/ahmednafies/covid) ![GitHub stars](https://img.shields.io/github/stars/ahmednafies/covid?style=social) ![GitHub forks](https://img.shields.io/github/forks/ahmednafies/covid?style=social)
 
 ## Description
 
