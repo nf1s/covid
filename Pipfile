@@ -20,6 +20,7 @@ pytest = "*"
 coverage = "*"
 beautifulsoup4 = "*"
 inflection = "*"
+bleach = ">=3.*"
 
 [requires]
 python_version = "3.7"
