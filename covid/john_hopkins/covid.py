@@ -2,15 +2,15 @@
 """ Covid coronavirus statistics based on John Hopkins University statistics
 
 """
-from urllib.parse import ParseResult, urlparse, urlencode
 from covid.john_hopkins.models import CovidModel, CountryModel
 import requests
 from covid import config
 
-URL = "https://services1.arcgis.com"
+BASE_URL = "https://services1.arcgis.com"
 PATH = (
     "/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query"
 )
+URL = BASE_URL + PATH
 SOURCE = config.JOHN_HOPKINS
 
 
@@ -23,117 +23,43 @@ class Covid:
         self.source = SOURCE
 
     @staticmethod
-    def __all_url() -> str:
-        """Method returns the url used to fetch all data from John hopkins server
-        
-        Returns:
-            str: URL for getting all Covid data
-        """
-        url = urlparse(URL)
-        path = PATH
-
-        query = urlencode(
-            dict(
-                f="json",
-                where="Confirmed > 0",
-                returnGeometry="false",
-                spatialRel="esriSpatialRelIntersects",
-                outFields="*",
-                orderByFields="Confirmed desc",
-                resultOffset="0",
-                resultRecordCount="200",
-                cacheHint="true",
-            )
-        )
-
-        url = ParseResult(
-            scheme=url.scheme,
-            netloc=url.hostname,
-            path=path,
-            query=query,
-            params=url.params,
-            fragment=url.fragment,
-        )
-        return url.geturl()
-
-    @staticmethod
-    def __country_url(object_id: str) -> str:
+    def __get_total_cases_by_country_id(object_id: str) -> dict:
         """Method formats and encodes the URL for a specific country information regarding Covid
         
         Args:
             country (str): Country name e.g. "sweden"
         
         Returns:
-            str: Formatted encoded URL for the requested country
+            dict: Country related information regarding Coronavirus
+            example:
+                    {
+                        'country': 'Sweden',
+                        'confirmed': 355,
+                        'active': 334,
+                        'deaths': 0,
+                        'recovered': 1,
+                        'latitude': 63.0,
+                        'longitude': 16.0,
+                        'last_update': 1583893094000
+                    }
         """
-        url = urlparse(URL)
-        path = PATH
 
-        query = urlencode(
-            dict(
-                f="json",
-                where=f"OBJECTID = {object_id}",
-                returnGeometry="false",
-                spatialRel="esriSpatialRelIntersects",
-                outFields="*",
-                resultOffset="0",
-                resultRecordCount="1",
-                cacheHint="true",
-            )
+        params = dict(
+            f="json",
+            where=f"OBJECTID = {object_id}",
+            returnGeometry="false",
+            spatialRel="esriSpatialRelIntersects",
+            outFields="*",
+            resultOffset="0",
+            resultRecordCount="1",
+            cacheHint="true",
         )
 
-        url = ParseResult(
-            scheme=url.scheme,
-            netloc=url.hostname,
-            path=path,
-            query=query,
-            params=url.params,
-            fragment=url.fragment,
-        )
-        return url.geturl()
-
-    @staticmethod
-    def __total_url_by_case(case: str) -> str:
-        """Method formats and encodes the URL for a specific case (Deaths, Confirmed cases and Recovered cases)
-        
-        Args:
-            case (str): cases = "Deaths", "Confirmed" and "Recovered"
-        
-        Returns:
-            str: Formatted encoded URL for the requested case
-        """
-        url = urlparse(URL)
-        path = PATH
-
-        query = urlencode(
-            dict(
-                f="json",
-                where="Confirmed > 0",
-                returnGeometry="false",
-                spatialRel="esriSpatialRelIntersects",
-                outFields="*",
-                outStatistics=str(
-                    [
-                        {
-                            "statisticType": "sum",
-                            "onStatisticField": f"{case}",
-                            "outStatisticFieldName": "value",
-                        }
-                    ]
-                ),
-                cacheHint="true",
-            )
-        )
-
-        url = ParseResult(
-            scheme=url.scheme,
-            netloc=url.hostname,
-            path=path,
-            query=query,
-            params=url.params,
-            fragment=url.fragment,
-        )
-        return url.geturl()
+        response = requests.get(URL, params=params).json()
+        try:
+            return response["features"][0]["attributes"]
+        except KeyError:
+            raise Exception(response)
 
     def __get_total_by_case(self, case: str) -> int:
         """Method fetchs the total value of a specific case (Deaths, Confirmed cases and Recovered cases)
@@ -144,8 +70,24 @@ class Covid:
         Returns:
             str: Total value
         """
-        url = self.__total_url_by_case(case)
-        response = requests.get(url).json()
+        params = dict(
+            f="json",
+            where="Confirmed > 0",
+            returnGeometry="false",
+            spatialRel="esriSpatialRelIntersects",
+            outFields="*",
+            outStatistics=str(
+                [
+                    {
+                        "statisticType": "sum",
+                        "onStatisticField": f"{case}",
+                        "outStatisticFieldName": "value",
+                    }
+                ]
+            ),
+            cacheHint="true",
+        )
+        response = requests.get(URL, params=params).json()
         try:
             return response["features"][0]["attributes"]["value"]
         except KeyError:
@@ -170,8 +112,18 @@ class Covid:
                                 'last_update': 1584097775000
                             }
         """
-
-        response = requests.get(self.__all_url()).json()
+        params = dict(
+            f="json",
+            where="Confirmed > 0",
+            returnGeometry="false",
+            spatialRel="esriSpatialRelIntersects",
+            outFields="*",
+            orderByFields="Confirmed desc",
+            resultOffset="0",
+            resultRecordCount="200",
+            cacheHint="true",
+        )
+        response = requests.get(URL, params=params).json()
         try:
             return response["features"]
         except KeyError:
@@ -246,13 +198,8 @@ class Covid:
                         'last_update': 1583893094000
                     }
         """
-        url = self.__country_url(country_id)
-        response = requests.get(url).json()
-        try:
-            case = response["features"][0]["attributes"]
-        except KeyError:
-            raise Exception(response)
 
+        case = self.__get_total_cases_by_country_id(country_id)
         return CovidModel(**case).dict()
 
     def get_status_by_country_name(self, country_name) -> dict:
@@ -287,12 +234,5 @@ class Covid:
                 f"There is no country called '{country_name}', to check available country names use `list_countries()`"
             )
 
-        url = self.__country_url(country["id"])
-        response = requests.get(url).json()
-
-        try:
-            case = response["features"][0]["attributes"]
-        except KeyError:
-            raise Exception(response)
-
+        case = self.__get_total_cases_by_country_id(country["id"])
         return CovidModel(**case).dict()
