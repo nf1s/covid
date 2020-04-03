@@ -401,106 +401,136 @@
                 <p><img alt="john_hopkins.png" src="../img/john_hopkins.png" /></p>
 <p>by default <code>Covid</code> uses John Hopkins univeristy API as default
 so you can use:</p>
-<pre><code>covid = Covid()
-</code></pre>
-<p>or</p>
-<pre><code>covid = Covid(source="john_hopkins")
-</code></pre>
-<h3 id="check-the-source">Check the Source</h3>
-<pre><code>covid.source
-</code></pre>
-<p>result</p>
-<pre><code>"john_hopkins"
-</code></pre>
-<h3 id="get-all-data">Get All Data</h3>
-<pre><code>from covid import Covid
+<div class="codehilite"><pre><span></span><code><span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">()</span>
+</code></pre></div>
 
-covid = Covid()
-covid.get_data()
-</code></pre>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code><span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;john_hopkins&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h3 id="check-the-source">Check the Source</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">covid</span><span class="o">.</span><span class="n">source</span>
+</code></pre></div>
+
+
 <p>result</p>
-<pre><code>[
-    {
-        'id': '53',
-        'country': 'China',
-        'confirmed': 81020,
-        'active': 9960,
-        'deaths': 3217,
-        'recovered': 67843,
-        'latitude': 30.5928,
-        'longitude': 114.3055,
-        'last_update': 1584097775000
-    },
-    {
-        'id': '115',
-        'country': 'Italy',
-        'confirmed': 24747,
-        'active': 20603,
-        'deaths': 1809,
-        'recovered': 2335,
-        'latitude': 41.8719,
-        'longitude': 12.5674,
-        'last_update': 1584318130000
-    },
-    ...
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;john_hopkins&quot;</span>
+</code></pre></div>
+
+
+<h3 id="get-all-data">Get All Data</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">covid</span> <span class="kn">import</span> <span class="n">Covid</span>
+
+<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">()</span>
+<span class="n">covid</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>result</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;53&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;China&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">81020</span><span class="p">,</span>
+        <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="mi">9960</span><span class="p">,</span>
+        <span class="s1">&#39;deaths&#39;</span><span class="p">:</span> <span class="mi">3217</span><span class="p">,</span>
+        <span class="s1">&#39;recovered&#39;</span><span class="p">:</span> <span class="mi">67843</span><span class="p">,</span>
+        <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="mf">30.5928</span><span class="p">,</span>
+        <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="mf">114.3055</span><span class="p">,</span>
+        <span class="s1">&#39;last_update&#39;</span><span class="p">:</span> <span class="mi">1584097775000</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;115&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Italy&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">24747</span><span class="p">,</span>
+        <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="mi">20603</span><span class="p">,</span>
+        <span class="s1">&#39;deaths&#39;</span><span class="p">:</span> <span class="mi">1809</span><span class="p">,</span>
+        <span class="s1">&#39;recovered&#39;</span><span class="p">:</span> <span class="mi">2335</span><span class="p">,</span>
+        <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="mf">41.8719</span><span class="p">,</span>
+        <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="mf">12.5674</span><span class="p">,</span>
+        <span class="s1">&#39;last_update&#39;</span><span class="p">:</span> <span class="mi">1584318130000</span>
+    <span class="p">},</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+
 <h3 id="list-countries">List Countries</h3>
 <p>This comes in handy when you need to know the available names of countries
 when using <code>get_status_by_country_name</code>, eg. "The Republic of Moldova" or just "Moldova"
 So use this when you need to know the country exact name that you can use.</p>
-<pre><code>countries = covid.list_countries()
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="n">covid</span><span class="o">.</span><span class="n">list_countries</span><span class="p">()</span>
+</code></pre></div>
+
+
 <p>result</p>
-<pre><code>[
-    {'id': '53', 'country': 'China'},
-    {'id': '115', 'country': 'Italy'}
-    ...
-]
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;53&#39;</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;China&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;115&#39;</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Italy&#39;</span><span class="p">}</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</code></pre></div>
+
+
 <h3 id="get-status-by-country-id">Get Status By Country ID</h3>
-<pre><code>italy_cases = covid.get_status_by_country_id(115)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">italy_cases</span> <span class="o">=</span> <span class="n">covid</span><span class="o">.</span><span class="n">get_status_by_country_id</span><span class="p">(</span><span class="mi">115</span><span class="p">)</span>
+</code></pre></div>
+
+
 <p>result</p>
-<pre><code>{
-    'id': '115',
-    'country': 'Italy',
-    'confirmed': 24747,
-    'active': 20603,
-    'deaths': 1809,
-    'recovered': 2335,
-    'latitude': 41.8719,
-    'longitude': 12.5674,
-    'last_update': 1584318130000
-}
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;115&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Italy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">24747</span><span class="p">,</span>
+    <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="mi">20603</span><span class="p">,</span>
+    <span class="s1">&#39;deaths&#39;</span><span class="p">:</span> <span class="mi">1809</span><span class="p">,</span>
+    <span class="s1">&#39;recovered&#39;</span><span class="p">:</span> <span class="mi">2335</span><span class="p">,</span>
+    <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="mf">41.8719</span><span class="p">,</span>
+    <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="mf">12.5674</span><span class="p">,</span>
+    <span class="s1">&#39;last_update&#39;</span><span class="p">:</span> <span class="mi">1584318130000</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
 <h3 id="get-status-by-country-name">Get Status By Country Name</h3>
-<pre><code>italy_cases = covid.get_status_by_country_name("italy")
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">italy_cases</span> <span class="o">=</span> <span class="n">covid</span><span class="o">.</span><span class="n">get_status_by_country_name</span><span class="p">(</span><span class="s2">&quot;italy&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
 <p>result</p>
-<pre><code>{
-    'id': '115',
-    'country': 'Italy',
-    'confirmed': 24747,
-    'active': 20603,
-    'deaths': 1809,
-    'recovered': 2335,
-    'latitude': 41.8719,
-    'longitude': 12.5674,
-    'last_update': 1584318130000
-}
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;115&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Italy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">24747</span><span class="p">,</span>
+    <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="mi">20603</span><span class="p">,</span>
+    <span class="s1">&#39;deaths&#39;</span><span class="p">:</span> <span class="mi">1809</span><span class="p">,</span>
+    <span class="s1">&#39;recovered&#39;</span><span class="p">:</span> <span class="mi">2335</span><span class="p">,</span>
+    <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="mf">41.8719</span><span class="p">,</span>
+    <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="mf">12.5674</span><span class="p">,</span>
+    <span class="s1">&#39;last_update&#39;</span><span class="p">:</span> <span class="mi">1584318130000</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
 <h3 id="get-total-active-cases">Get Total Active cases</h3>
-<pre><code>active = covid.get_total_active_cases()
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">active</span> <span class="o">=</span> <span class="n">covid</span><span class="o">.</span><span class="n">get_total_active_cases</span><span class="p">()</span>
+</code></pre></div>
+
+
 <h3 id="get-total-confirmed-cases">Get Total Confirmed cases</h3>
-<pre><code>confirmed = covid.get_total_confirmed_cases()
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">confirmed</span> <span class="o">=</span> <span class="n">covid</span><span class="o">.</span><span class="n">get_total_confirmed_cases</span><span class="p">()</span>
+</code></pre></div>
+
+
 <h3 id="get-total-recovered-cases">Get Total Recovered cases</h3>
-<pre><code>recovered = covid.get_total_recovered()
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">recovered</span> <span class="o">=</span> <span class="n">covid</span><span class="o">.</span><span class="n">get_total_recovered</span><span class="p">()</span>
+</code></pre></div>
+
+
 <h3 id="get-total-deaths">Get Total Deaths</h3>
-<pre><code>deaths = covid.get_total_deaths()
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">deaths</span> <span class="o">=</span> <span class="n">covid</span><span class="o">.</span><span class="n">get_total_deaths</span><span class="p">()</span>
+</code></pre></div>
                 
               
               
