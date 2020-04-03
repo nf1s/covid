@@ -16,7 +16,9 @@ Full code on [github](https://github.com/ahmednafies/covid)
 
 ## How to install
 
-    pip install covid
+```bash
+pip install covid
+```
 
 ## Dependencies
 
@@ -25,16 +27,18 @@ Full code on [github](https://github.com/ahmednafies/covid)
 
 ## How to use
 
-    from covid import Covid
+```python
+from covid import Covid
 
-    # by default data source is "john_hopkins"
-    covid = Covid()
+# by default data source is "john_hopkins"
+covid = Covid()
 
-    # or
-    covid = Covid(source="john_hopkins")
+# or
+covid = Covid(source="john_hopkins")
 
-    # to get data from worldometers.info
-    covid = Covid(source="worldometers")
+# to get data from worldometers.info
+covid = Covid(source="worldometers")
 
-    # get all data
-    covid.get_data()
+# get all data
+covid.get_data()
+```

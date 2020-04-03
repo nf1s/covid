@@ -1,3 +1,5 @@
 ## Using Pip
 
-    pip install covid
+```bash
+pip install covid
+```
