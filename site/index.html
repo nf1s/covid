@@ -340,30 +340,36 @@ by Johns Hopkins university and worldometers.info</p>
 <p><img alt="corona.jpeg" src="img/corona.jpeg" /></p>
 <p>Full code on <a href="https://github.com/ahmednafies/covid">github</a></p>
 <h2 id="requirements">Requirements</h2>
-<pre><code>python &gt;= 3.6
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="err">python &gt;= 3.6</span>
+</code></pre></div>
+
+
 <h2 id="how-to-install">How to install</h2>
-<pre><code>pip install covid
-</code></pre>
+<div class="codehilite"><pre><span></span><code>pip install covid
+</code></pre></div>
+
+
 <h2 id="dependencies">Dependencies</h2>
-<pre><code>pydantic
-requests
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="err">pydantic</span>
+<span class="err">requests</span>
+</code></pre></div>
+
+
 <h2 id="how-to-use">How to use</h2>
-<pre><code>from covid import Covid
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">covid</span> <span class="kn">import</span> <span class="n">Covid</span>
 
-# by default data source is "john_hopkins"
-covid = Covid()
+<span class="c1"># by default data source is &quot;john_hopkins&quot;</span>
+<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">()</span>
 
-# or
-covid = Covid(source="john_hopkins")
+<span class="c1"># or</span>
+<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;john_hopkins&quot;</span><span class="p">)</span>
 
-# to get data from worldometers.info
-covid = Covid(source="worldometers")
+<span class="c1"># to get data from worldometers.info</span>
+<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;worldometers&quot;</span><span class="p">)</span>
 
-# get all data
-covid.get_data()
-</code></pre>
+<span class="c1"># get all data</span>
+<span class="n">covid</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+</code></pre></div>
                 
               
               
