@@ -8,3 +8,5 @@ theme:
   name: "material"
   palette:
     primary: "red"
+markdown_extensions:
+  - codehilite

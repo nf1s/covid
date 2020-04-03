@@ -9,6 +9,7 @@ ipython = "*"
 pre-commit = "*"
 ipdb = "*"
 black = "*"
+pygments = "*"
 
 [packages]
 requests = "*"
