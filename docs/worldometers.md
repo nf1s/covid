@@ -26,28 +26,35 @@ result
 
 ```python
 [
+[
     {
-        'country': 'Malta',
-        'confirmed': 110,
-        'new_cases': 3,
-        'deaths': 0,
-        'recovered': 2,
-        'active': 108,
-        'critical': 1,
-        'total_cases_per_million': Decimal('249'),
-        'total_deaths_per_million': Decimal('0')
+        'country': 'USA',
+        'confirmed': 311637,
+        'new_cases': 280,
+        'deaths': 8454,
+        'recovered': 14828,
+        'active': 288355,
+        'critical': 8206,
+        'new_deaths': 2,
+        'total_tests': 1656897,
+        'total_tests_per_million': Decimal('0'),
+        'total_cases_per_million': Decimal('941'),
+        'total_deaths_per_million': Decimal('26')
     },
     {
-        'country': 'Cameroon',
-        'confirmed': 66,
-        'new_cases': 10,
-        'deaths': 0,
-        'recovered': 2,
-        'active': 64,
-        'critical': 0,
-        'total_cases_per_million': Decimal('2'),
-        'total_deaths_per_million': Decimal('0')
-    },
+        'active': 1376,
+        'confirmed': 81669,
+        'country': 'China',
+        'critical': 295,
+        'deaths': 3329,
+        'new_cases': 30,
+        'new_deaths': 3,
+        'recovered': 76964,
+        'total_cases_per_million': Decimal('57'),
+        'total_deaths_per_million': Decimal('2'),
+        'total_tests': 0,
+        'total_tests_per_million': Decimal('0')
+    }
     ...
 ]
 ```
@@ -62,16 +69,19 @@ result
 
 ```python
 {
+    'active': 88274,
+    'confirmed': 124632,
     'country': 'Italy',
-    'confirmed': 69176,
-    'new_cases': 5249,
-    'deaths': 6820,
-    'recovered': 8326,
-    'active': 54030,
-    'critical': 3393,
-    'total_cases_per_million': Decimal('1144'),
-    'total_deaths_per_million': Decimal('113')
-}
+    'critical': 3994,
+    'deaths': 15362,
+    'new_cases': 0,
+    'new_deaths': 0,
+    'recovered': 20996,
+    'total_cases_per_million': Decimal('2061'),
+    'total_deaths_per_million': Decimal('254'),
+    'total_tests': 657224,
+    'total_tests_per_million': Decimal('0')
+ }
 ```
 
 ### List Countries
