@@ -32,6 +32,7 @@ class Covid:
         self.__headers = [
             header.text.replace("\xa0", "") for header in headers
         ]
+        breakpoint()
         self.__rows = table.tbody.find_all("tr")
         self.__total_cases = soup.find_all(
             "div", attrs={"class": "maincounter-number"}
@@ -67,7 +68,6 @@ class Covid:
         Returns:
             list: List of country data
         """
-
         return [
             CovidModel(**dict(zip(self.__headers, self.__format(val)))).dict()
             for val in self.__data.values()
