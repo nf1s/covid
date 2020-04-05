@@ -26,7 +26,6 @@ result
 
 ```python
 [
-[
     {
         'country': 'USA',
         'confirmed': 311637,
