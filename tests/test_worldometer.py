@@ -19,6 +19,9 @@ def test_all_data():
     assert "recovered" in element
     assert "new_cases" in element
     assert "critical" in element
+    assert "new_deaths" in element
+    assert "total_tests" in element
+    assert "total_tests_per_million" in element
     assert "total_cases_per_million" in element
     assert "total_deaths_per_million" in element
 
@@ -33,6 +36,9 @@ def test_get_by_country_name():
     assert "recovered" in data
     assert "new_cases" in data
     assert "critical" in data
+    assert "new_deaths" in data
+    assert "total_tests" in data
+    assert "total_tests_per_million" in data
     assert "total_cases_per_million" in data
     assert "total_deaths_per_million" in data
     assert data["country"] == "Sweden"

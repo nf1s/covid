@@ -32,7 +32,6 @@ class Covid:
         self.__headers = [
             header.text.replace("\xa0", "") for header in headers
         ]
-        breakpoint()
         self.__rows = table.tbody.find_all("tr")
         self.__total_cases = soup.find_all(
             "div", attrs={"class": "maincounter-number"}
