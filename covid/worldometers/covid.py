@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from covid.worldometers.models import CovidModel
 from covid import config
+from pydantic import ValidationError
 
 URL = "https://www.worldometers.info/coronavirus/"
 
@@ -59,7 +60,7 @@ class Covid:
             list: output formatted list
         """
         _list = [val.strip().replace(",", "") for val in _list]
-        return [val if val else 0 for val in _list]
+        return [val if val and val != "N/A" else 0 for val in _list]
 
     def get_data(self) -> list:
         """Method returns a list of all of the data from worldometers after being formatted
