@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from covid.worldometers.models import CovidModel
 from covid import config
+from pydantic import ValidationError
 
 URL = "https://www.worldometers.info/coronavirus/"
 
@@ -19,6 +20,18 @@ class Covid:
         self.__fetch()
         self.__set_data()
         self.source = SOURCE
+
+    @staticmethod
+    def _is_float(string):
+
+        try:
+            float(string)
+            return True
+        except ValueError:
+            return False
+
+    def _is_num(self, string):
+        return string.isnumeric() or self._is_float(string)
 
     def __fetch(self):
         """Method get all data when the class is inistantiated
@@ -59,7 +72,7 @@ class Covid:
             list: output formatted list
         """
         _list = [val.strip().replace(",", "") for val in _list]
-        return [val if val else 0 for val in _list]
+        return [val if val and self._is_num(val) else 0 for val in _list]
 
     def get_data(self) -> list:
         """Method returns a list of all of the data from worldometers after being formatted
