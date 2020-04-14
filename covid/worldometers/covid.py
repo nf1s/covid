@@ -68,7 +68,6 @@ class Covid:
         Returns:
             list: List of country data
         """
-
         return [
             CovidModel(**dict(zip(self.__headers, self.__format(val)))).dict()
             for val in self.__data.values()

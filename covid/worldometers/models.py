@@ -18,6 +18,9 @@ class CovidModel(BaseModel):
     recovered: int = Field(0, alias="TotalRecovered")
     active: int = Field(0, alias="ActiveCases")
     critical: int = Field(0, alias="Serious,Critical")
+    new_deaths: int = Field(0, alias="NewDeaths")
+    total_tests: int = Field(0, alias="TotalTests")
+    total_tests_per_million: Decimal = Field(Decimal(0), alias="Tests/1M pop")
     total_cases_per_million: Decimal = Field(
         Decimal(0), alias="TotCases/1M pop"
     )
