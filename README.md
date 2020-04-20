@@ -4,7 +4,7 @@
 
 ## Description
 
-Python SDK to get information regarding the novel corona virus provided
+Python package to get information regarding the novel corona virus provided
 by Johns Hopkins university and worldometers.info
 
 Full Documentation can be found [here](https://ahmednafies.github.io/covid/)

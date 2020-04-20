@@ -13,7 +13,7 @@ with io.open("covid/__init__.py", "rt", encoding="utf8") as f:
 setup(
     name="covid",
     version=version,
-    description="Python SDK to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info",
+    description="Python package to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://ahmednafies.github.io/covid/",
