@@ -1,45 +1,63 @@
 version: 2.1 # use CircleCI 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
-jobs:
-  build:
-    working_directory: ~/covid
-    docker:
-      - image: circleci/python:3.7.5
 
-    steps:
-      - checkout
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-      - restore_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-      - run:
-          command: |
-            sudo pip install pipenv
-            pipenv install --system
-      - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python3.7/site-packages"
-      - run:
-          name: Run Tests
-          command: |
-            make test-coverage
-            pipenv run coverage xml
-      - store_artifacts:
-          path: coverage.xml
-      - codecov/upload:
-          file: coverage.xml
-          flags: backend
-      - run:
-          name: init .pypirc
-          command: |
-            echo -e "[pypi]" >> ~/.pypirc
-            echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
-            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
-      - run:
-          name: deploy package
-          command: |
-            make deploy
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - build:
+          working_directory: ~/covid
+          docker:
+            - image: circleci/python:3.7.5
+
+          steps:
+            - checkout
+            - run: sudo chown -R circleci:circleci /usr/local/bin
+            - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+            - restore_cache:
+                key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+            - run:
+                command: |
+                  sudo pip install pipenv
+                  pipenv install --system
+            - save_cache:
+                key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+                paths:
+                  - ".venv"
+                  - "/usr/local/bin"
+                  - "/usr/local/lib/python3.7/site-packages"
+
+      - test:
+          requires:
+            - build
+          steps:
+            - run:
+                name: Run Tests
+                command: |
+                  make test-coverage
+                  pipenv run coverage xml
+            - store_artifacts:
+                path: coverage.xml
+            - codecov/upload:
+                file: coverage.xml
+                flags: backend
+
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+          steps:
+            - run:
+                name: init .pypirc
+                command: |
+                  echo -e "[pypi]" >> ~/.pypirc
+                  echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
+                  echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+            - run:
+                name: deploy package
+                command: |
+                  make deploy
