@@ -26,8 +26,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            pipenv run coverage run -m pytest
-            pipenv run coverage report
+            make test-coverage
             pipenv run coverage xml
       - store_artifacts:
           path: coverage.xml
