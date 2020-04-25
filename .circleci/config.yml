@@ -4,7 +4,7 @@ orbs:
   codecov: codecov/codecov@1.0.5
 
 jobs:
-  build-and-test:
+  build:
     working_directory: ~/covid
     docker:
       - image: circleci/python:3.7.5
@@ -41,7 +41,6 @@ jobs:
     docker:
       - image: circleci/python:3.7.5
     steps:
-      - checkout
       - run:
           name: init .pypirc
           command: |
