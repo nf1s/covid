@@ -16,7 +16,7 @@ jobs:
       - run:
           command: |
             sudo pip install pipenv
-            pipenv install
+            pipenv install --system
       - save_cache:
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
@@ -26,11 +26,20 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            pipenv run coverage run -m pytest
-            pipenv run coverage report
+            make test-coverage
             pipenv run coverage xml
       - store_artifacts:
           path: coverage.xml
       - codecov/upload:
           file: coverage.xml
           flags: backend
+      - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - run:
+          name: deploy package
+          command: |
+            make deploy
