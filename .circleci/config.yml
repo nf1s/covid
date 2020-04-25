@@ -1,6 +1,8 @@
-version: 2.1 # use CircleCI 2.1
+version: 2.1
+
 orbs:
   codecov: codecov/codecov@1.0.5
+
 jobs:
   build:
     working_directory: ~/covid
@@ -24,7 +26,7 @@ jobs:
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
       - run:
-          name: Run Tests
+          name: run Tests
           command: |
             make test-coverage
             pipenv run coverage xml
@@ -33,6 +35,12 @@ jobs:
       - codecov/upload:
           file: coverage.xml
           flags: backend
+
+  deploy:
+    working_directory: ~/covid
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
       - run:
           name: init .pypirc
           command: |
@@ -43,3 +51,15 @@ jobs:
           name: deploy package
           command: |
             make deploy
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
