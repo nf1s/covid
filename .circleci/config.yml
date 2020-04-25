@@ -41,8 +41,10 @@ jobs:
       - codecov/upload:
           file: coverage.xml
           flags: backend
-  
+
   deploy:
+    docker:
+      - image: circleci/python:3.7.5
     requires:
       - build
     steps:
@@ -52,4 +54,3 @@ jobs:
             echo -e "[pypi]" >> ~/.pypirc
             echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
-
