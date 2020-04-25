@@ -6,16 +6,7 @@ workflows:
   pypi_deploy:
     jobs:
       - build
-      - deploy:
-          requires:
-            - build
-          steps:
-            - run:
-                name: init .pypirc
-                command: |
-                  echo -e "[pypi]" >> ~/.pypirc
-                  echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
-                  echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - deploy
 
 jobs:
   build:
@@ -50,3 +41,15 @@ jobs:
       - codecov/upload:
           file: coverage.xml
           flags: backend
+  
+  deploy:
+    requires:
+      - build
+    steps:
+      - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+
