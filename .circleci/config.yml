@@ -1,64 +1,70 @@
-version: 2.1
+version: 2.0
 
 orbs:
   codecov: codecov/codecov@1.0.5
 
+jobs:
+  build:
+    working_directory: ~/covid
+    docker:
+      - image: circleci/python:3.7.5
+
+    steps:
+      - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+      - restore_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          command: |
+            sudo pip install pipenv
+            pipenv install --system
+      - save_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.7/site-packages"
+
+  test:
+    working_directory: ~/covid
+    steps:
+      - run:
+          name: run Tests
+          command: |
+            make test-coverage
+            pipenv run coverage xml
+      - store_artifacts:
+          path: coverage.xml
+      - codecov/upload:
+          file: coverage.xml
+          flags: backend
+
+  deploy:
+    working_directory: ~/covid
+    steps:
+      - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - run:
+          name: deploy package
+          command: |
+            make deploy
+
 workflows:
   version: 2
-  build-test-and-deploy:
+  build-and-deploy:
     jobs:
-      - build:
-          working_directory: ~/covid
-          docker:
-            - image: circleci/python:3.7.5
-
-          steps:
-            - checkout
-            - run: sudo chown -R circleci:circleci /usr/local/bin
-            - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-            - restore_cache:
-                key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-            - run:
-                command: |
-                  sudo pip install pipenv
-                  pipenv install --system
-            - save_cache:
-                key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-                paths:
-                  - ".venv"
-                  - "/usr/local/bin"
-                  - "/usr/local/lib/python3.7/site-packages"
-
+      - build
       - test:
-          # requires:
-          #   - build
-          steps:
-            - run:
-                name: run Tests
-                command: |
-                  make test-coverage
-                  pipenv run coverage xml
-            - store_artifacts:
-                path: coverage.xml
-            - codecov/upload:
-                file: coverage.xml
-                flags: backend
-
+          requires:
+            - build
       - deploy:
-          # requires:
-          #   - test
+          requires:
+            - test
           filters:
             branches:
-              only:
-                - master
-          steps:
-            - run:
-                name: init .pypirc
-                command: |
-                  echo -e "[pypi]" >> ~/.pypirc
-                  echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
-                  echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
-            - run:
-                name: deploy package
-                command: |
-                  make deploy
+              only: master
