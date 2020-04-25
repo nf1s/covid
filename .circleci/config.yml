@@ -28,6 +28,8 @@ jobs:
 
   test:
     working_directory: ~/covid
+    docker:
+      - image: circleci/python:3.7.5
     steps:
       - run:
           name: run Tests
@@ -42,6 +44,8 @@ jobs:
 
   deploy:
     working_directory: ~/covid
+    docker:
+      - image: circleci/python:3.7.5
     steps:
       - run:
           name: init .pypirc
