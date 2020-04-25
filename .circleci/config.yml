@@ -4,7 +4,7 @@ orbs:
   codecov: codecov/codecov@1.0.5
 
 jobs:
-  build:
+  build-and-test:
     working_directory: ~/covid
     docker:
       - image: circleci/python:3.7.5
@@ -25,12 +25,6 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
-
-  test:
-    working_directory: ~/covid
-    docker:
-      - image: circleci/python:3.7.5
-    steps:
       - run:
           name: run Tests
           command: |
@@ -47,6 +41,7 @@ jobs:
     docker:
       - image: circleci/python:3.7.5
     steps:
+      - checkout
       - run:
           name: init .pypirc
           command: |
@@ -63,12 +58,10 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
+
       - deploy:
           requires:
-            - test
+            - build
           filters:
             branches:
               only: master
