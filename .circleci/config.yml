@@ -1,4 +1,5 @@
-version: 2.1 # use CircleCI 2.1
+version: 2.1
+
 orbs:
   codecov: codecov/codecov@1.0.5
 
@@ -33,7 +34,7 @@ workflows:
             - build
           steps:
             - run:
-                name: Run Tests
+                name: run Tests
                 command: |
                   make test-coverage
                   pipenv run coverage xml
