@@ -1,9 +1,8 @@
 version: 2.1 # use CircleCI 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
-
 jobs:
-  build_and_deply:
+  build:
     working_directory: ~/covid
     docker:
       - image: circleci/python:3.7.5
