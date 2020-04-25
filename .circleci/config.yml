@@ -30,8 +30,8 @@ workflows:
                   - "/usr/local/lib/python3.7/site-packages"
 
       - test:
-          requires:
-            - build
+          # requires:
+          #   - build
           steps:
             - run:
                 name: run Tests
@@ -45,8 +45,8 @@ workflows:
                 flags: backend
 
       - deploy:
-          requires:
-            - test
+          # requires:
+          #   - test
           filters:
             branches:
               only:
