@@ -25,6 +25,13 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
+
+  test:
+    working_directory: ~/covid
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
+      - checkout
       - run:
           name: run Tests
           command: |
@@ -41,7 +48,6 @@ jobs:
     docker:
       - image: circleci/python:3.7.5
     steps:
-      - checkout
       - run:
           name: init .pypirc
           command: |
@@ -58,9 +64,12 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy:
+      - test:
           requires:
             - build
+      - deploy:
+          requires:
+            - test
           filters:
             branches:
               only: master
