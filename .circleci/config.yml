@@ -3,12 +3,8 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
 
-jobs:
+commands:
   build:
-    working_directory: ~/covid
-    docker:
-      - image: circleci/python:3.7.5
-
     steps:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
@@ -25,27 +21,8 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
-
   test:
-    working_directory: ~/covid
-    docker:
-      - image: circleci/python:3.7.5
     steps:
-      - checkout
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-      - restore_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-      - run:
-          command: |
-            sudo pip install pipenv
-            pipenv install --system
-      - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python3.7/site-packages"
       - run:
           name: run Tests
           command: |
@@ -58,25 +35,7 @@ jobs:
           flags: backend
 
   deploy:
-    working_directory: ~/covid
-    docker:
-      - image: circleci/python:3.7.5
     steps:
-      - checkout
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-      - restore_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-      - run:
-          command: |
-            sudo pip install pipenv
-            pipenv install --system
-      - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python3.7/site-packages"
       - run:
           name: init .pypirc
           command: |
@@ -88,14 +47,28 @@ jobs:
           command: |
             make deploy
 
+jobs:
+  test:
+    working_directory: ~/covid
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
+      - build
+      - test
+
+  deploy:
+    working_directory: ~/covid
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
+      - build
+      - deploy
+
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - test
       - deploy:
           requires:
             - test
