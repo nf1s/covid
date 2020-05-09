@@ -21,7 +21,7 @@ or
 ### List Countries
 
 This comes in handy when you need to know the available names of countries
-when using `get_status_by_country_name`, eg. "The Republic of Moldova" or just "Moldova"
+when using `./cli.py -s 'source' -c 'country_name'`, eg. "The Republic of Moldova" or just "Moldova"
 So use this when you need to know the country exact name that you can use.
 
 ```bash
