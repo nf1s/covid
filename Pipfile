@@ -1,0 +1,32 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+ipython = "*"
+pre-commit = "*"
+ipdb = "*"
+black = "*"
+pygments = "*"
+
+[packages]
+requests = "*"
+twine = "*"
+mkdocs = "*"
+mkdocs-material = "*"
+pydantic = "*"
+pytest = "*"
+coverage = "*"
+beautifulsoup4 = "*"
+inflection = "*"
+bleach = ">=3.*"
+jeepney = ">=0.4.2"
+click = "*"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
