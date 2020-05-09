@@ -23,6 +23,7 @@ beautifulsoup4 = "*"
 inflection = "*"
 bleach = ">=3.*"
 jeepney = ">=0.4.2"
+click = "*"
 
 [requires]
 python_version = "3.7"

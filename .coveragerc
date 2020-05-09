@@ -4,6 +4,7 @@ branch = True
 omit =
     example.py
     setup.py
+    cli.py
     
 source = .
 
