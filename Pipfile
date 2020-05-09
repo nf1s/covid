@@ -22,6 +22,7 @@ coverage = "*"
 beautifulsoup4 = "*"
 inflection = "*"
 bleach = ">=3.*"
+click = "*"
 
 [requires]
 python_version = "3.7"
