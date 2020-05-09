@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import io
 import re
-
+import os
 from setuptools import setup
 
 with io.open("README.md") as f:
@@ -9,6 +9,9 @@ with io.open("README.md") as f:
 
 with io.open("covid/__init__.py", "rt", encoding="utf8") as f:
     version = re.search(r'__version__ = "(.*?)"', f.read()).group(1)
+
+os.system(f"git tag v{version}")
+os.system(f"git push --tag")
 
 setup(
     name="covid",
