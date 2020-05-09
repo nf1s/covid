@@ -6,7 +6,7 @@ from covid import config
 __author__ = "Ahmed Nafies Okasha Mohamed <ahmed.nafies@gmail.com>"
 __copyright__ = "Copyright 2020, Ahmed Nafies Okasha Mohamed"
 __license__ = "MIT"
-__version__ = "2.2.7"
+__version__ = "2.2.8"
 
 
 def Covid(source=config.JOHN_HOPKINS):
