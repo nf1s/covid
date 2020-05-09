@@ -3,7 +3,9 @@ nav:
   - Getting Started: index.md
   - Install: install.md
   - John Hopkins University API: john_hopkins.md
-  - Worldometers.info (New): worldometers.md
+  - Worldometers.info: worldometers.md
+  - CLI (New): cli.md
+
 theme:
   name: "material"
   palette:
