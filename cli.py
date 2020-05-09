@@ -23,7 +23,10 @@ def cli():
     show_default=True,
 )
 @click.option(
-    "--country", "-c", type=str, help="get stats by country name, 'sweden' or 'italy'",
+    "--country",
+    "-c",
+    type=str,
+    help="get stats by country name, 'sweden' or 'italy'",
 )
 @click.option(
     "--option",
@@ -31,15 +34,28 @@ def cli():
     type=str,
     help="get total stats. options 'active', 'confimed', 'recovered' or 'deaths'",
 )
+@click.option(
+    "--list-countries",
+    "-l",
+    is_flag=True,
+    help="get a list of country name depending on a source",
+)
 @cli.command(name="covid", help="Get coronavirus stats")
-def get_data(source, country, option):
+def get_data(source, country, option, list_countries):
     click.echo(click.style(f"fetching data from  '{source}'", fg="green"))
     covid = Covid(source)
+
+    if list_countries:
+        data = covid.list_countries()
+        pprint(data)
+        return
 
     if option and country:
         data = covid.get_status_by_country_name(country)
         click.echo(
-            click.style(f"total {option} in {country}: {data[option]}", fg="yellow")
+            click.style(
+                f"total {option} in {country}: {data[option]}", fg="yellow"
+            )
         )
         return
 
@@ -54,11 +70,15 @@ def get_data(source, country, option):
             return
         if option == CONFIRMED:
             data = covid.get_total_confirmed_cases()
-            click.echo(click.style(f"total confirmed cases: {data}", fg="yellow"))
+            click.echo(
+                click.style(f"total confirmed cases: {data}", fg="yellow")
+            )
             return
         if option == RECOVERED:
             data = covid.get_total_recovered()
-            click.echo(click.style(f"total recovered cases: {data}", fg="yellow"))
+            click.echo(
+                click.style(f"total recovered cases: {data}", fg="yellow")
+            )
             return
         if option == DEATHS:
             data = covid.get_total_deaths()
@@ -66,7 +86,9 @@ def get_data(source, country, option):
             return
 
         click.echo(
-            click.style(f"Total option argument '{option}' is not allowed", fg="red")
+            click.style(
+                f"Total option argument '{option}' is not allowed", fg="red"
+            )
         )
         return
 
