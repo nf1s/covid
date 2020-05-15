@@ -46,7 +46,7 @@ class Covid:
             [attr.text.strip() for attr in row if attr != "\n"]
             for row in self.__rows
         )
-        self.__data = {country[0].lower(): country for country in countries}
+        self.__data = {country[1].lower(): country for country in countries}
 
     def __format(self, _list: list) -> list:
         """Method formats a list and returns a fomatted one
