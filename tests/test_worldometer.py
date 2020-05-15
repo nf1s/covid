@@ -24,6 +24,7 @@ def test_all_data():
     assert "total_tests_per_million" in element
     assert "total_cases_per_million" in element
     assert "total_deaths_per_million" in element
+    assert "population" in element
 
 
 def test_get_by_country_name():
@@ -41,6 +42,7 @@ def test_get_by_country_name():
     assert "total_tests_per_million" in data
     assert "total_cases_per_million" in data
     assert "total_deaths_per_million" in data
+    assert "population" in data
     assert data["country"] == "Sweden"
 
 
