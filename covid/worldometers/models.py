@@ -27,3 +27,4 @@ class CovidModel(BaseModel):
     total_deaths_per_million: Decimal = Field(
         Decimal(0), alias="Deaths/1M pop"
     )
+    population: Decimal = Field(Decimal(0), alias = "Population")
