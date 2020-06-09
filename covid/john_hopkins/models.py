@@ -15,7 +15,7 @@ class CovidModel(BaseModel):
     confirmed: int = Field(0, alias="Confirmed")
     active: int = Field(0, alias="Active")
     deaths: int = Field(0, alias="Deaths")
-    recovered: int = Field(0, alias="Recovered")
+    recovered: int = Field(None, alias="Recovered")
     latitude: float = Field(None, alias="Lat")
     longitude: float = Field(None, alias="Long_")
     last_update: int = Field(0, alias="Last_Update")
