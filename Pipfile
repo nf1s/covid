@@ -10,6 +10,7 @@ pre-commit = "*"
 ipdb = "*"
 black = "*"
 pygments = "*"
+pdbpp = "*"
 
 [packages]
 requests = "*"
