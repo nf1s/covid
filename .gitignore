@@ -16,3 +16,4 @@ __pycache__
 .mypy_cache
 .venv
 .vim
+site
