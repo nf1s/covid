@@ -2,11 +2,15 @@
 import typer
 from covid import Covid
 from pprint import pprint
+from enum import Enum
 
-ACTIVE = "active"
-CONFIRMED = "confirmed"
-RECOVERED = "recovered"
-DEATHS = "deaths"
+
+class Options(str, Enum):
+    ACTIVE = "active"
+    CONFIRMED = "confirmed"
+    RECOVERED = "recovered"
+    DEATHS = "deaths"
+
 
 app = typer.Typer()
 
@@ -26,7 +30,7 @@ def get_data(
         "-c",
         help="get stats by country name, 'sweden' or 'italy'",
     ),
-    option: str = typer.Option(
+    option: Options = typer.Option(
         None,
         "--option",
         "-o",
@@ -40,6 +44,7 @@ def get_data(
         is_flag=True,
     ),
 ):
+    """Get coronavirus information"""
 
     typer.echo(typer.style(f"fetching data from  '{source}'", fg="green"))
     covid = Covid(source)
@@ -63,23 +68,23 @@ def get_data(
         pprint(data)
         return
     elif option:
-        if option == ACTIVE:
+        if option == Options.ACTIVE:
             data = covid.get_total_active_cases()
             typer.echo(typer.style(f"total active cases: {data}", fg="yellow"))
             return
-        if option == CONFIRMED:
+        if option == Options.CONFIRMED:
             data = covid.get_total_confirmed_cases()
             typer.echo(
                 typer.style(f"total confirmed cases: {data}", fg="yellow")
             )
             return
-        if option == RECOVERED:
+        if option == Options.RECOVERED:
             data = covid.get_total_recovered()
             typer.echo(
                 typer.style(f"total recovered cases: {data}", fg="yellow")
             )
             return
-        if option == DEATHS:
+        if option == Options.DEATHS:
             data = covid.get_total_deaths()
             typer.echo(typer.style(f"total deaths: {data}", fg="yellow"))
             return
