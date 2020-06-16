@@ -233,6 +233,5 @@ class Covid:
             raise ValueError(
                 f"There is no country called '{country_name}', to check available country names use `list_countries()`"
             )
-
         case = self.__get_total_cases_by_country_id(country["id"])
         return CovidModel(**case).dict()
