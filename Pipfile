@@ -24,6 +24,7 @@ inflection = "*"
 bleach = ">=3.*"
 jeepney = ">=0.4.2"
 click = "*"
+typer = "*"
 
 [requires]
 python_version = "3.7"
