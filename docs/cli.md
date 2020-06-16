@@ -1,59 +1,62 @@
 ### Get all data
 
+```bash
+./cli --help
+```
 #### John Hopkins source (default)
 
 ```bash
-./cli.py covid
+./cli
 ```
 
 or
 
 ```bash
-./cli.py covid -s john_hopkins
+./cli -s john_hopkins
 ```
 
 #### Worldometers source
 
 ```bash
-./cli.py covid -s worldometers
+./cli -s worldometers
 ```
 
 ### List Countries
 
 This comes in handy when you need to know the available names of countries
-when using `./cli.py -s 'source' -c 'country_name'`, eg. "The Republic of Moldova" or just "Moldova"
+when using `./cli -s 'source' -c 'country_name'`, eg. "The Republic of Moldova" or just "Moldova"
 So use this when you need to know the country exact name that you can use.
 
 ```bash
-./cli.py covid -s worldometers --list-countries
+./cli -s worldometers --list-countries
 ```
 
 ### Get Status By Country Name
 
 ```bash
-./cli.py covid -s worldometers -c sweden
+./cli -s worldometers -c sweden
 ```
 
 ### Get Total Active cases
 
 ```bash
-./cli.py covid -s worldometers -o active
+./cli -s worldometers -o active
 ```
 
 ### Get Total Confirmed cases
 
 ```bash
-./cli.py covid -s worldometers -o confirmed
+./cli -s worldometers -o confirmed
 ```
 
 ### Get Total Recovered cases
 
 ```bash
-./cli.py covid -s worldometers -o recovered
+./cli -s worldometers -o recovered
 ```
 
 ### Get Total Deaths
 
 ```bash
-./cli.py covid -s worldometers -o deaths
+./cli -s worldometers -o deaths
 ```
