@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import io
 import re
-import os
 from setuptools import setup
 
 with io.open("README.md") as f:
@@ -9,9 +8,6 @@ with io.open("README.md") as f:
 
 with io.open("covid/__init__.py", "rt", encoding="utf8") as f:
     version = re.search(r'__version__ = "(.*?)"', f.read()).group(1)
-
-os.system(f"git tag v{version}")
-os.system(f"git push --tag")
 
 setup(
     name="covid",
@@ -49,6 +45,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
+    entry_points={"covid.commands": ["cli=covid.cli:get_data"]},
     zip_safe=False,
     python_requires=">=3.6",
 )

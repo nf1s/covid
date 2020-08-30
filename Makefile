@@ -17,3 +17,6 @@ deploy-docs:
 
 serve-docs:
 	pipenv run mkdocs serve
+
+shell:
+	pipenv run ipython
