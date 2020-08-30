@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import typer
 from covid import Covid
 from pprint import pprint
