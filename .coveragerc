@@ -4,7 +4,8 @@ branch = True
 omit =
     example.py
     setup.py
-    cli.py
+    covid/cli.py
+    .venv/*
     
 source = .
 
