@@ -425,55 +425,55 @@
                   <h1>CLI (New)</h1>
                 
                 <h3 id="get-all-data">Get all data</h3>
-<div class="codehilite"><pre><span></span><code>./cli --help
+<div class="codehilite"><pre><span></span><code>covid --help
 </code></pre></div>
 
 
 <h4 id="john-hopkins-source-default">John Hopkins source (default)</h4>
-<div class="codehilite"><pre><span></span><code>./cli
+<div class="codehilite"><pre><span></span><code>covid
 </code></pre></div>
 
 
 <p>or</p>
-<div class="codehilite"><pre><span></span><code>./cli -s john_hopkins
+<div class="codehilite"><pre><span></span><code>covid -s john_hopkins
 </code></pre></div>
 
 
 <h4 id="worldometers-source">Worldometers source</h4>
-<div class="codehilite"><pre><span></span><code>./cli -s worldometers
+<div class="codehilite"><pre><span></span><code>covid -s worldometers
 </code></pre></div>
 
 
 <h3 id="list-countries">List Countries</h3>
 <p>This comes in handy when you need to know the available names of countries
-when using <code>./cli -s 'source' -c 'country_name'</code>, eg. "The Republic of Moldova" or just "Moldova"
+when using <code>covid -s 'source' -c 'country_name'</code>, eg. "The Republic of Moldova" or just "Moldova"
 So use this when you need to know the country exact name that you can use.</p>
-<div class="codehilite"><pre><span></span><code>./cli -s worldometers --list-countries
+<div class="codehilite"><pre><span></span><code>covid -s worldometers --list-countries
 </code></pre></div>
 
 
 <h3 id="get-status-by-country-name">Get Status By Country Name</h3>
-<div class="codehilite"><pre><span></span><code>./cli -s worldometers -c sweden
+<div class="codehilite"><pre><span></span><code>covid -s worldometers -c sweden
 </code></pre></div>
 
 
 <h3 id="get-total-active-cases">Get Total Active cases</h3>
-<div class="codehilite"><pre><span></span><code>./cli -s worldometers -o active
+<div class="codehilite"><pre><span></span><code>covid -s worldometers -o active
 </code></pre></div>
 
 
 <h3 id="get-total-confirmed-cases">Get Total Confirmed cases</h3>
-<div class="codehilite"><pre><span></span><code>./cli -s worldometers -o confirmed
+<div class="codehilite"><pre><span></span><code>covid -s worldometers -o confirmed
 </code></pre></div>
 
 
 <h3 id="get-total-recovered-cases">Get Total Recovered cases</h3>
-<div class="codehilite"><pre><span></span><code>./cli -s worldometers -o recovered
+<div class="codehilite"><pre><span></span><code>covid -s worldometers -o recovered
 </code></pre></div>
 
 
 <h3 id="get-total-deaths">Get Total Deaths</h3>
-<div class="codehilite"><pre><span></span><code>./cli -s worldometers -o deaths
+<div class="codehilite"><pre><span></span><code>covid -s worldometers -o deaths
 </code></pre></div>
                 
               
