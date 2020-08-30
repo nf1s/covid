@@ -20,7 +20,7 @@ setup(
     author_email="ahmed.nafies@gmail.com",
     license="MIT",
     packages=["covid", "covid.john_hopkins", "covid.worldometers"],
-    install_requires=["requests", "pydantic", "beautifulsoup4"],
+    install_requires=["requests", "pydantic", "beautifulsoup4", "typer"],
     extras_require={
         "dev": [
             "pipenv",
