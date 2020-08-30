@@ -45,7 +45,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    entry_points={"console_scripts": ["cli=covid.cli:get_data"]},
+    entry_points={"console_scripts": ["cli=covid.cli:app"]},
     zip_safe=False,
     python_requires=">=3.6",
 )
