@@ -6,9 +6,7 @@ from pydantic import BaseModel, Field
 
 
 class CovidModel(BaseModel):
-    """Dataclass acts as a Model for Covid data
-
-    """
+    """Dataclass acts as a Model for Covid data"""
 
     id: str = Field(..., alias="OBJECTID")
     country: str = Field(..., alias="Country_Region")
@@ -22,9 +20,7 @@ class CovidModel(BaseModel):
 
 
 class CountryModel(BaseModel):
-    """Dataclass acts as a Model for Countries data
-
-    """
+    """Dataclass acts as a Model for Countries data"""
 
     id: str = Field(..., alias="OBJECTID")
     name: str = Field(..., alias="Country_Region")
