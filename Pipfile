@@ -11,6 +11,7 @@ ipdb = "*"
 black = "*"
 pygments = "*"
 pdbpp = "*"
+jedi = "==0.17.2"
 
 [packages]
 requests = "*"

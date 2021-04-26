@@ -15,9 +15,7 @@ SOURCE = config.JOHN_HOPKINS
 
 
 class Covid:
-    """Class handells all functionality
-
-    """
+    """Class handells all functionality"""
 
     def __init__(self):
         self.source = SOURCE
@@ -25,10 +23,10 @@ class Covid:
     @staticmethod
     def __get_total_cases_by_country_id(object_id: str) -> dict:
         """Method formats and encodes the URL for a specific country information regarding Covid
-        
+
         Args:
             country (str): Country name e.g. "sweden"
-        
+
         Returns:
             dict: Country related information regarding Coronavirus
             example:
@@ -63,10 +61,10 @@ class Covid:
 
     def __get_total_by_case(self, case: str) -> int:
         """Method fetchs the total value of a specific case (Deaths, Confirmed cases and Recovered cases)
-        
+
         Args:
             case (str): cases = "Deaths", "Confirmed" and "Recovered"
-        
+
         Returns:
             str: Total value
         """
@@ -95,7 +93,7 @@ class Covid:
 
     def __get_all_cases(self) -> list:
         """Method fetches all data related to Covid
-        
+
         Returns:
             list: list of Covid data
                 example:
@@ -130,15 +128,14 @@ class Covid:
             raise Exception(response)
 
     def get_data(self) -> list:
-        """Method fetches all data related to Covid
-        """
+        """Method fetches all data related to Covid"""
 
         cases = self.__get_all_cases()
         return [CovidModel(**case["attributes"]).dict() for case in cases]
 
     def get_total_active_cases(self) -> int:
         """Method fetches and returns total number of active cases
-        
+
         Returns:
             int: Total number of active at this time
         """
@@ -146,7 +143,7 @@ class Covid:
 
     def get_total_deaths(self) -> int:
         """Method fetches and returns total deaths number
-        
+
         Returns:
             int: Total number of deaths at this time
         """
@@ -154,7 +151,7 @@ class Covid:
 
     def get_total_confirmed_cases(self) -> int:
         """Method fetches and returns the total number of confirmed cases
-        
+
         Returns:
             int: Total number of confirmed cases at this time
         """
@@ -162,7 +159,7 @@ class Covid:
 
     def get_total_recovered(self) -> int:
         """Method fetches and returns the total number of recovered cases
-        
+
         Returns:
             int: Total number of recovered cases at this time
         """
@@ -180,10 +177,10 @@ class Covid:
 
     def get_status_by_country_id(self, country_id) -> dict:
         """Method fetches and returns specific country information related to coronavirus
-        
+
         Args:
             country (str):  Country name e.g. "sweden"
-        
+
         Returns:
             dict: Country related information regarding Coronavirus
             example:
@@ -204,10 +201,10 @@ class Covid:
 
     def get_status_by_country_name(self, country_name) -> dict:
         """Method fetches and returns specific country information related to coronavirus
-        
+
         Args:
             country (str):  Country name e.g. "sweden"
-        
+
         Returns:
             dict: Country related information regarding Coronavirus
             example:
