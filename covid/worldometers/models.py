@@ -2,19 +2,19 @@
 """ Covid coronavirus statistics based on John Hopkins University statistics
 
 """
-from pydantic import BaseModel, Field
 from decimal import Decimal
+
+from pydantic import BaseModel, Field
 
 
 class CovidModel(BaseModel):
-    """Dataclass acts as a Model for Covid data
-
-    """
+    """Dataclass acts as a Model for Covid data"""
 
     country: str = Field(..., alias="Country,Other")
     confirmed: int = Field(0, alias="TotalCases")
     new_cases: int = Field(0, alias="NewCases")
     deaths: int = Field(0, alias="TotalDeaths")
+    new_deaths: int = Field(0, alias="NewDeaths")
     recovered: int = Field(0, alias="TotalRecovered")
     active: int = Field(0, alias="ActiveCases")
     critical: int = Field(0, alias="Serious,Critical")
@@ -27,4 +27,4 @@ class CovidModel(BaseModel):
     total_deaths_per_million: Decimal = Field(
         Decimal(0), alias="Deaths/1M pop"
     )
-    population: Decimal = Field(Decimal(0), alias = "Population")
+    population: Decimal = Field(Decimal(0), alias="Population")

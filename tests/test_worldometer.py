@@ -2,6 +2,7 @@
 """ tests module
 """
 import pytest
+
 from covid import Covid
 
 covid = Covid("worldometers")
@@ -18,6 +19,7 @@ def test_all_data():
     assert "deaths" in element
     assert "recovered" in element
     assert "new_cases" in element
+    assert "new_deaths" in element
     assert "critical" in element
     assert "new_deaths" in element
     assert "total_tests" in element
@@ -28,22 +30,23 @@ def test_all_data():
 
 
 def test_get_by_country_name():
-    data = covid.get_status_by_country_name("sweden")
-    assert type(data) is dict
-    assert "country" in data
-    assert "confirmed" in data
-    assert "active" in data
-    assert "deaths" in data
-    assert "recovered" in data
-    assert "new_cases" in data
-    assert "critical" in data
-    assert "new_deaths" in data
-    assert "total_tests" in data
-    assert "total_tests_per_million" in data
-    assert "total_cases_per_million" in data
-    assert "total_deaths_per_million" in data
-    assert "population" in data
-    assert data["country"] == "Sweden"
+    element = covid.get_status_by_country_name("sweden")
+    assert type(element) is dict
+    assert "country" in element
+    assert "confirmed" in element
+    assert "active" in element
+    assert "deaths" in element
+    assert "recovered" in element
+    assert "new_cases" in element
+    assert "new_deaths" in element
+    assert "critical" in element
+    assert "new_deaths" in element
+    assert "total_tests" in element
+    assert "total_tests_per_million" in element
+    assert "total_cases_per_million" in element
+    assert "total_deaths_per_million" in element
+    assert "population" in element
+    assert element["country"] == "Sweden"
 
 
 def test_get_by_country_invalid_name():
