@@ -4,9 +4,10 @@
 """
 import requests
 from bs4 import BeautifulSoup
-from covid.worldometers.models import CovidModel
-from covid import config
 from pydantic import ValidationError
+
+from covid import config
+from covid.worldometers.models import CovidModel
 
 URL = "https://www.worldometers.info/coronavirus/"
 
@@ -23,8 +24,8 @@ class Covid:
 
     def __fetch(self):
         """Method get all data when the class is inistantiated
-            1. parses html
-            2. gets all country data
+        1. parses html
+        2. gets all country data
         """
         response = requests.get(self.__url)
         soup = BeautifulSoup(response.text, "html.parser")
@@ -39,8 +40,7 @@ class Covid:
         )
 
     def __set_data(self):
-        """Method formats data to make it easily callable by country name
-        """
+        """Method formats data to make it easily callable by country name"""
 
         countries = (
             [attr.text.strip() for attr in row if attr != "\n"]
@@ -52,10 +52,9 @@ class Covid:
         """Method formats a list and returns a fomatted one
         1. removes ','
         2. if there is no value it adds 0
-        
         Args:
             _list (list): input list to be formatted
-        
+
         Returns:
             list: output formatted list
         """
@@ -64,7 +63,7 @@ class Covid:
 
     def get_data(self) -> list:
         """Method returns a list of all of the data from worldometers after being formatted
-        
+
         Returns:
             list: List of country data
         """
@@ -75,13 +74,13 @@ class Covid:
 
     def get_status_by_country_name(self, country_name: str) -> dict:
         """Method gets country status
-        
+
         Args:
             country_name (str): country name e.g "Sweden"
-        
+
         Raises:
             ValueError: when country name is not correct
-        
+
         Returns:
             dict: Country information
         """
@@ -105,10 +104,10 @@ class Covid:
     def __to_num(string: str) -> int:
         """formats string numbers and converts them to an integer
         e.g '123,456' -> 123456
-        
+
         Args:
             string (str): input string number
-        
+
         Returns:
             int: output integer number
         """
@@ -116,7 +115,7 @@ class Covid:
 
     def get_total_confirmed_cases(self) -> int:
         """Method gets the total number of confirmed cases
-        
+
         Returns:
             int: Number of confirmed cases
         """
@@ -124,7 +123,7 @@ class Covid:
 
     def get_total_deaths(self) -> int:
         """Method gets the total number of deaths
-        
+
         Returns:
             int: Total number of deaths
         """
@@ -132,7 +131,7 @@ class Covid:
 
     def get_total_recovered(self) -> int:
         """Method gets the total number of recovered cases
-        
+
         Returns:
             int: Total number of recovered cases
         """
@@ -140,7 +139,7 @@ class Covid:
 
     def get_total_active_cases(self) -> int:
         """Method gets the total number of active cases
-        
+
         Returns:
             int: Total number of active cases
         """
