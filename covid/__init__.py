@@ -6,14 +6,17 @@ from covid.worldometers import Covid as WorldometersCovid
 __author__ = "Ahmed Nafies Okasha Mohamed <ahmed.nafies@gmail.com>"
 __copyright__ = "Copyright 2020, Ahmed Nafies Okasha Mohamed"
 __license__ = "MIT"
-__version__ = "2.4.2"
+__version__ = "2.5.0"
+
+services = {
+    "john_hopkins": JohnHopkinsCovid,
+    "worldometers": WorldometersCovid,
+}
 
 
 def Covid(source=config.JOHN_HOPKINS):
-    if source == config.JOHN_HOPKINS:
-        return JohnHopkinsCovid()
-
-    if source == config.WORLDOMETERS:
-        return WorldometersCovid()
-
-    raise ValueError(f"Allowed sources are {', '.join(config.SOURCES)}")
+    try:
+        service = services[source]
+        return service()
+    except KeyError:
+        raise ValueError(f"Allowed sources are {', '.join(config.SOURCES)}")
