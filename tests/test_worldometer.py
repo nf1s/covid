@@ -15,7 +15,9 @@ def test_all_data():
     element = data[0]
     assert "country" in element
     assert "confirmed" in element
+    assert "total_cases" in element
     assert "active" in element
+    assert "active_cases" in element
     assert "deaths" in element
     assert "recovered" in element
     assert "new_cases" in element
@@ -34,7 +36,9 @@ def test_get_by_country_name():
     assert type(element) is dict
     assert "country" in element
     assert "confirmed" in element
+    assert "total_cases" in element
     assert "active" in element
+    assert "active_cases" in element
     assert "deaths" in element
     assert "recovered" in element
     assert "new_cases" in element
