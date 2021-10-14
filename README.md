@@ -133,22 +133,10 @@ italy_cases = covid.get_status_by_country_name("italy")
 }
 ```
 
-### Get Total Active cases
-
-```python
-active = covid.get_total_active_cases()
-```
-
 ### Get Total Confirmed cases
 
 ```python
 confirmed = covid.get_total_confirmed_cases()
-```
-
-### Get Total Recovered cases
-
-```python
-recovered = covid.get_total_recovered()
 ```
 
 ### Get Total Deaths
