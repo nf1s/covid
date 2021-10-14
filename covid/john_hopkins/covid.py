@@ -2,9 +2,10 @@
 """ Covid coronavirus statistics based on John Hopkins University statistics
 
 """
-from covid.john_hopkins.models import CovidModel, CountryModel
 import requests
+
 from covid import config
+from covid.john_hopkins.models import CountryModel, CovidModel
 
 BASE_URL = "https://services1.arcgis.com"
 PATH = (
@@ -133,14 +134,6 @@ class Covid:
         cases = self.__get_all_cases()
         return [CovidModel(**case["attributes"]).dict() for case in cases]
 
-    def get_total_active_cases(self) -> int:
-        """Method fetches and returns total number of active cases
-
-        Returns:
-            int: Total number of active at this time
-        """
-        return self.__get_total_by_case("Active")
-
     def get_total_deaths(self) -> int:
         """Method fetches and returns total deaths number
 
@@ -156,14 +149,6 @@ class Covid:
             int: Total number of confirmed cases at this time
         """
         return self.__get_total_by_case("Confirmed")
-
-    def get_total_recovered(self) -> int:
-        """Method fetches and returns the total number of recovered cases
-
-        Returns:
-            int: Total number of recovered cases at this time
-        """
-        return self.__get_total_by_case("Recovered")
 
     def list_countries(self) -> list:
         """Method returns the names of all countries available, so that it can be used when

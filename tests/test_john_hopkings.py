@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """ tests module
 """
-import pytest
-from covid import Covid
 from unittest.mock import patch
+
+import pytest
+
+from covid import Covid
 
 
 class MockRequestData:
@@ -81,12 +83,6 @@ def test_get_by_country_invalid_name():
         covid.get_status_by_country_name("USA")
 
 
-def test_total_active_cases():
-    covid = Covid()
-    data = covid.get_total_active_cases()
-    assert type(data) is int
-
-
 def test_total_confirmed_cases():
     covid = Covid()
     data = covid.get_total_confirmed_cases()
@@ -96,12 +92,6 @@ def test_total_confirmed_cases():
 def test_total_deaths():
     covid = Covid()
     data = covid.get_total_deaths()
-    assert type(data) is int
-
-
-def test_total_recovered():
-    covid = Covid()
-    data = covid.get_total_recovered()
     assert type(data) is int
 
 
