@@ -1,13 +1,13 @@
 # Covid
 
-[![CircleCI](https://circleci.com/gh/ahmednafies/covid.svg?style=shield)](https://circleci.com/gh/ahmednafies/covid) [![codecov](https://codecov.io/gh/ahmednafies/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/ahmednafies/covid) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/ahmednafies/covid) [![Downloads](https://pepy.tech/badge/covid)](https://pepy.tech/project/covid) ![GitHub](https://img.shields.io/github/license/ahmednafies/covid)
+[![CircleCI](https://circleci.com/gh/nf1s/covid.svg?style=shield)](https://circleci.com/gh/ahmednafies/covid) [![codecov](https://codecov.io/gh/ahmednafies/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/ahmednafies/covid) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/ahmednafies/covid) [![Downloads](https://pepy.tech/badge/covid)](https://pepy.tech/project/covid) ![GitHub](https://img.shields.io/github/license/ahmednafies/covid)
 
 ## Description
 
 Python package to get information regarding the novel corona virus provided
 by Johns Hopkins university and worldometers.info
 
-Full Documentation can be found [here](https://ahmednafies.github.io/covid/)
+Full Documentation can be found [here](https://nf1s.github.io/covid/)
 
 ![corona.jpeg](docs/img/corona.jpeg)
 
