@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import io
 import re
+
 from setuptools import setup
 
 with io.open("README.md") as f:
@@ -15,7 +16,7 @@ setup(
     description="Python package to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://ahmednafies.github.io/covid/",
+    url="https://nf1s.github.io/covid/",
     author="Ahmed Nafies",
     author_email="ahmed.nafies@gmail.com",
     license="MIT",
@@ -34,8 +35,8 @@ setup(
         "docs": ["mkdocs", "mkdocs-material"],
     },
     project_urls={
-        "Documentation": "https://ahmednafies.github.io/covid/",
-        "Source": "https://github.com/ahmednafies/covid",
+        "Documentation": "https:/nf1s.github.io/covid/",
+        "Source": "https://github.com/nf1s/covid",
     },
     classifiers=[
         "Intended Audience :: Developers",
