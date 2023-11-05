@@ -68,8 +68,11 @@ class Covid:
             list: List of country data
         """
         return [
-            CovidModel(**dict(zip(self.__headers, self.__format(val)))).dict()
+            CovidModel(
+                **dict(zip(self.__headers, self.__format(val)))
+            ).model_dump()
             for val in self.__data.values()
+            if val[0] != ""
         ]
 
     def get_status_by_country_name(self, country_name: str) -> dict:
