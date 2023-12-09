@@ -20,7 +20,7 @@ commands:
           paths:
             - ".venv"
             - "/usr/local/bin"
-            - "/usr/local/lib/python3.7/site-packages"
+            - "/usr/local/lib/python3.8/site-packages"
   test:
     steps:
       - run:
@@ -51,7 +51,7 @@ jobs:
   test:
     working_directory: ~/covid
     docker:
-      - image: circleci/python:3.8.16
+      - image: circleci/python:3.8
     steps:
       - build
       - test
@@ -59,7 +59,7 @@ jobs:
   deploy:
     working_directory: ~/covid
     docker:
-      - image: circleci/python:3.8.16
+      - image: circleci/python:3.8
     steps:
       - build
       - deploy
