@@ -26,6 +26,7 @@ bleach = ">=3.*"
 jeepney = ">=0.4.2"
 click = "*"
 typer = "*"
+importlib-metadata = "*"
 
 [requires]
 python_version = "3.8"
