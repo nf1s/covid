@@ -17,7 +17,7 @@ requests = "*"
 twine = "*"
 mkdocs = "*"
 mkdocs-material = "*"
-pydantic = "*"
+pydantic = "<2.0.0"
 pytest = "*"
 coverage = "*"
 beautifulsoup4 = "*"
@@ -28,7 +28,7 @@ click = "*"
 typer = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
 
 [pipenv]
 allow_prereleases = true
