@@ -27,6 +27,7 @@ jeepney = ">=0.4.2"
 click = "*"
 typer = "*"
 importlib-metadata = "*"
+typing-extensions = "*"
 
 [requires]
 python_version = "3.8"
