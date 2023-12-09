@@ -8,7 +8,7 @@ commands:
     steps:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
       - restore_cache:
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       - run:
@@ -51,7 +51,7 @@ jobs:
   test:
     working_directory: ~/covid
     docker:
-      - image: circleci/python:3.7.5
+      - image: circleci/python:3.8.16
     steps:
       - build
       - test
@@ -59,7 +59,7 @@ jobs:
   deploy:
     working_directory: ~/covid
     docker:
-      - image: circleci/python:3.7.5
+      - image: circleci/python:3.8.16
     steps:
       - build
       - deploy
