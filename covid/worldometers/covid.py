@@ -58,7 +58,9 @@ class Covid:
         Returns:
             list: output formatted list
         """
-        _list = [val.strip().replace(",", "") for val in _list]
+        _list = [
+            val.strip().replace(",", "").replace("+", "") for val in _list
+        ]
         return [val if val and val != "N/A" else 0 for val in _list]
 
     def get_data(self) -> list:
