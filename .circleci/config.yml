@@ -8,33 +8,34 @@ commands:
     steps:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.10/site-packages
       - restore_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - run:
           command: |
-            sudo pip install pipenv
-            pipenv install --system
+            pip install -U pip
+            pip install poetry==1.8.3
+            poetry install --without dev
       - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
             - ".venv"
             - "/usr/local/bin"
-            - "/usr/local/lib/python3.8/site-packages"
+            - "/usr/local/lib/python3.10/site-packages"
   test:
     steps:
       - run:
           name: run Tests
           command: |
             make test-coverage
-            pipenv run coverage xml
+            poetry run coverage xml
       - store_artifacts:
           path: coverage.xml
       - codecov/upload:
           file: coverage.xml
           flags: backend
 
-  deploy:
+  publish:
     steps:
       - run:
           name: init .pypirc
@@ -43,33 +44,33 @@ commands:
             echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
       - run:
-          name: deploy package
+          name: publish package
           command: |
-            make deploy
+            make publish
 
 jobs:
   test:
     working_directory: ~/covid
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.10
     steps:
       - build
       - test
 
-  deploy:
+  publish:
     working_directory: ~/covid
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.10
     steps:
       - build
-      - deploy
+      - publish
 
 workflows:
   version: 2
-  build-and-deploy:
+  build-and-publish:
     jobs:
       - test
-      - deploy:
+      - publish:
           context: pypi
           requires:
             - test

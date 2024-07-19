@@ -1,3 +1,64 @@
+[tool.poetry]
+name = "covid"
+version = "2.6.1"
+authors = ["nf1s"]
+readme = "README.md"
+description = "Python package to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info"
+license = "MIT"
+homepage = "https://nf1s.github.io/covid/"
+repository = "https://github.com/nf1s/covid"
+documentation = "https://nf1s.github.io/covid/"
+
+[tool.poetry.extras]
+docs = [
+    "mkdocs",
+    "mkdocs-material"
+]
+
+[tool.poetry.scripts]
+covid = "covid.cli:app"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+requests = "*"
+mkdocs = "*"
+mkdocs-material = "*"
+pydantic = "<2.0.0"
+beautifulsoup4 = "*"
+inflection = "*"
+bleach = ">=3.*"
+jeepney = ">=0.4.2"
+click = "*"
+typer = "*"
+importlib-metadata = "*"
+typing-extensions = "*"
+
+
+[tool.poetry.group.dev.dependencies]
+rich = "*"
+argh = "*"
+pyyaml = "*"
+pdbpp = "*"
+pygments = "*"
+ipython = "*"
+
+
+[tool.poetry.group.test]
+[tool.poetry.group.test.dependencies]
+bandit = "*"
+flake8 = "*"
+flake8-black = "*"
+flake8-isort = "*"
+mypy = "*"
+pytest = "*"
+coverage = "*"
+pre-commit = "*"
+
+[build-system]
+requires = ["poetry-core>=1.2.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.black]
 line-length = 79
 target_version = ['py37']
@@ -20,3 +81,41 @@ exclude = '''
                      # the root of the project
 )
 '''
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+python_files = "test_*.py"
+python_functions = "test_*"
+python_classes = "Test* *Tests"
+addopts = "-vv -x"
+asyncio_mode = "auto"
+
+[tool.mypy]
+check_untyped_defs = true
+namespace_packages = true
+pretty = true
+show_error_context = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = [
+  "backoff.*",
+  "opentracing.*",
+  "sentinel"
+]
+ignore_missing_imports = true
+
+[tool.isort]
+atomic = true
+profile = "black"
+line_length = 100
+balanced_wrapping = true
+known_frameworks = "qlty_monitoring"
+known_localfolder = "app"
+known_test = "tests"
+sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,FRAMEWORKS,LOCALFOLDER,TEST"
+virtual_env = ".venv"
+skip = ".venv"

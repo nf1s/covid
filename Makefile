@@ -1,22 +1,26 @@
+.PHONY: test test-coverage build publish setup deploy-docs serve-docs shell
+
 test:
-	pipenv run pytest
+	@poetry run pytest
 
 test-coverage:
-	pipenv run coverage run -m pytest
-	pipenv run coverage report
+	@poetry run coverage run -m pytest
+	@poetry run coverage report
 
-deploy:
-	pipenv run python setup.py sdist
-	pipenv run twine upload dist/*
+build:
+	@poetry build
 
-install:
-	pipenv install
+publish:
+	@poetry publish
+
+setup:
+	@poetry install
 
 deploy-docs:
-	pipenv run mkdocs gh-deploy
+	@poetry run mkdocs gh-deploy
 
 serve-docs:
-	pipenv run mkdocs serve
+	@poetry run mkdocs serve
 
 shell:
-	pipenv run ipython
+	@poetry run ipython

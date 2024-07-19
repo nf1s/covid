@@ -6,7 +6,6 @@ from covid.worldometers import Covid as WorldometersCovid
 __author__ = "Ahmed Nafies <ahmed.nafies@gmail.com>"
 __copyright__ = "Copyright 2020, Ahmed Nafies"
 __license__ = "MIT"
-__version__ = "2.6.0"
 
 services = {
     "john_hopkins": JohnHopkinsCovid,
