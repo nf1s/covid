@@ -1,9 +1,22 @@
 [tool.poetry]
 name = "covid"
 version = "2.6.1"
-description = ""
-authors = ["Ahmed Nafies <ahmed.nafies@gmail.com>"]
+authors = ["nf1s"]
 readme = "README.md"
+description = "Python package to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info"
+license = "MIT"
+homepage = "https://nf1s.github.io/covid/"
+repository = "https://github.com/nf1s/covid"
+documentation = "https://nf1s.github.io/covid/"
+
+[tool.poetry.extras]
+docs = [
+    "mkdocs",
+    "mkdocs-material"
+]
+
+[tool.poetry.scripts]
+covid = "covid.cli:app"
 
 [tool.poetry.dependencies]
 python = "^3.8"

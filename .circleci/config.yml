@@ -10,13 +10,13 @@ commands:
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
       - restore_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: deps9-{{ .Branch }}-{{ checksum "poerty.lock" }}
       - run:
           command: |
-            sudo pip install pipenv
-            pipenv install --system
+            sudo pip install poetry
+            poetry install --system
       - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
             - ".venv"
             - "/usr/local/bin"
@@ -27,7 +27,7 @@ commands:
           name: run Tests
           command: |
             make test-coverage
-            pipenv run coverage xml
+            poetry run coverage xml
       - store_artifacts:
           path: coverage.xml
       - codecov/upload:
@@ -43,9 +43,9 @@ commands:
             echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
       - run:
-          name: deploy package
+          name: publish package
           command: |
-            make deploy
+            make publish
 
 jobs:
   test:
@@ -62,7 +62,7 @@ jobs:
       - image: circleci/python:3.8
     steps:
       - build
-      - deploy
+      - publish
 
 workflows:
   version: 2
