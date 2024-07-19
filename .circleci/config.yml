@@ -38,11 +38,9 @@ commands:
   publish:
     steps:
       - run:
-          name: init .pypirc
+          name: add pypi token to poetry config
           command: |
-            echo -e "[pypi]" >> ~/.pypirc
-            echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
-            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+            poetry config pypi-token.pypi $PYPI_TOKEN
       - run:
           name: publish package
           command: |
