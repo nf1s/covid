@@ -14,7 +14,7 @@ commands:
       - run:
           command: |
             sudo pip install poetry
-            poetry install --system
+            poetry install
       - save_cache:
           key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
