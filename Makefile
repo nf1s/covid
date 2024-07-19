@@ -11,7 +11,7 @@ build:
 	@poetry build
 
 publish:
-	@poetry publish
+	@poetry publish --build
 
 setup:
 	@poetry install
