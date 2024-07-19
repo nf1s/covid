@@ -14,7 +14,8 @@ commands:
       - run:
           command: |
             pip install poetry
-            poetry install
+            poetry config virtualenvs.create true
+            poetry install --without dev
       - save_cache:
           key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
