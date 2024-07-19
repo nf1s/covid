@@ -8,7 +8,7 @@ commands:
     steps:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.10/site-packages
       - restore_cache:
           key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - run:
@@ -22,7 +22,7 @@ commands:
           paths:
             - ".venv"
             - "/usr/local/bin"
-            - "/usr/local/lib/python3.8/site-packages"
+            - "/usr/local/lib/python3.10/site-packages"
   test:
     steps:
       - run:
@@ -53,7 +53,7 @@ jobs:
   test:
     working_directory: ~/covid
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.10
     steps:
       - build
       - test
@@ -61,7 +61,7 @@ jobs:
   publish:
     working_directory: ~/covid
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.10
     steps:
       - build
       - publish

@@ -19,7 +19,7 @@ docs = [
 covid = "covid.cli:app"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 
 requests = "*"
 mkdocs = "*"
