@@ -34,7 +34,7 @@ commands:
           file: coverage.xml
           flags: backend
 
-  deploy:
+  publish:
     steps:
       - run:
           name: init .pypirc
@@ -56,7 +56,7 @@ jobs:
       - build
       - test
 
-  deploy:
+  publish:
     working_directory: ~/covid
     docker:
       - image: circleci/python:3.8
@@ -66,10 +66,10 @@ jobs:
 
 workflows:
   version: 2
-  build-and-deploy:
+  build-and-publish:
     jobs:
       - test
-      - deploy:
+      - publish:
           context: pypi
           requires:
             - test
