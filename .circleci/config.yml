@@ -13,7 +13,8 @@ commands:
           key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - run:
           command: |
-            pip install poetry
+            pip install -U pip
+            pip install poetry==1.8.3
             poetry --version
             poetry config virtualenvs.create true
             poetry install --without dev
