@@ -14,6 +14,7 @@ commands:
       - run:
           command: |
             pip install poetry
+            poetry --version
             poetry config virtualenvs.create true
             poetry install --without dev
       - save_cache:
