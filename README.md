@@ -1,6 +1,6 @@
 # Covid
 
-[![CircleCI](https://circleci.com/gh/nf1s/covid.svg?style=shield)](https://circleci.com/gh/nf1s/covid) [![codecov](https://codecov.io/gh/nf1s/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/nf1s/covid) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/nf1s/covid) [![Downloads](https://pepy.tech/badge/covid)](https://pepy.tech/project/covid) ![GitHub](https://img.shields.io/github/license/nf1s/covid)
+[![CircleCI](https://circleci.com/gh/nf1s/covid.svg?style=shield)](https://circleci.com/gh/nf1s/covid) [![codecov](https://codecov.io/gh/nf1s/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/nf1s/covid) ![Pypi locked Python version](https://img.shields.io/pypi/pyversions/covid) [![Downloads](https://pepy.tech/badge/covid)](https://pepy.tech/project/covid) ![GitHub](https://img.shields.io/github/license/nf1s/covid)
 
 ## Description
 
@@ -13,7 +13,7 @@ Full Documentation can be found [here](https://nf1s.github.io/covid/)
 
 ## Requirements
 
-    python >= 3.6
+    python >= 3.10
 
 ## How to install
 
