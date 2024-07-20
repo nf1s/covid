@@ -313,11 +313,11 @@
   
   
     <li class="md-nav__item">
-      <a href="john_hopkins/" class="md-nav__link">
+      <a href="worldometers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    John Hopkins University API
+    Worldometers.info
   </span>
   
 
@@ -333,11 +333,11 @@
   
   
     <li class="md-nav__item">
-      <a href="worldometers/" class="md-nav__link">
+      <a href="john_hopkins/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Worldometers.info
+    John Hopkins University API (Deprecated)
   </span>
   
 
@@ -466,14 +466,15 @@ requests
 <h2 id="how-to-use">How to use</h2>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">covid</span> <span class="kn">import</span> <span class="n">Covid</span>
 
-<span class="c1"># by default data source is &quot;john_hopkins&quot;</span>
+<span class="c1"># by default data source is &quot;worldometers&quot;</span>
 <span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">()</span>
 
 <span class="c1"># or</span>
-<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;john_hopkins&quot;</span><span class="p">)</span>
 
-<span class="c1"># to get data from worldometers.info</span>
 <span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;worldometers&quot;</span><span class="p">)</span>
+
+<span class="c1"># to get data from john hopkins (deprecated)</span>
+<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;john_hopkins&quot;</span><span class="p">)</span>
 
 <span class="c1"># get all data</span>
 <span class="n">covid</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>

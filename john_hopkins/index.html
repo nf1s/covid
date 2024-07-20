@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../install/">
+        <link rel="prev" href="../worldometers/">
       
       
-        <link rel="next" href="../worldometers/">
+        <link rel="next" href="../cli/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>John Hopkins University API - Covid</title>
+        <title>John Hopkins University API (Deprecated) - Covid</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              John Hopkins University API
+              John Hopkins University API (Deprecated)
             
           </span>
         </div>
@@ -236,6 +236,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../worldometers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Worldometers.info
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -250,7 +270,7 @@
           
   
   <span class="md-ellipsis">
-    John Hopkins University API
+    John Hopkins University API (Deprecated)
   </span>
   
 
@@ -261,7 +281,7 @@
         
   
   <span class="md-ellipsis">
-    John Hopkins University API
+    John Hopkins University API (Deprecated)
   </span>
   
 
@@ -347,26 +367,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../worldometers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Worldometers.info
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -493,15 +493,9 @@
                   
 
 
-  <h1>John Hopkins University API</h1>
+  <h1>John Hopkins University API (Deprecated)</h1>
 
 <p><img alt="john_hopkins.png" src="../img/john_hopkins.png" /></p>
-<p>by default <code>Covid</code> uses John Hopkins univeristy API as default
-so you can use:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">()</span>
-</code></pre></div>
-
-<p>or</p>
 <div class="codehilite"><pre><span></span><code><span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;john_hopkins&quot;</span><span class="p">)</span>
 </code></pre></div>
 
@@ -516,7 +510,7 @@ so you can use:</p>
 <h3 id="get-all-data">Get All Data</h3>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">covid</span> <span class="kn">import</span> <span class="n">Covid</span>
 
-<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">()</span>
+<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;john_hopkins&quot;</span><span class="p">)</span>
 <span class="n">covid</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 </code></pre></div>
 

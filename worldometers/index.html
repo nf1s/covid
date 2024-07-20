@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../john_hopkins/">
+        <link rel="prev" href="../install/">
       
       
-        <link rel="next" href="../cli/">
+        <link rel="next" href="../john_hopkins/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -236,26 +236,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../john_hopkins/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    John Hopkins University API
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -376,6 +356,26 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../john_hopkins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    John Hopkins University API (Deprecated)
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -514,7 +514,16 @@
   <h1>Worldometers.info</h1>
 
 <p><img alt="worldometers.png" src="../img/worldometers.png" /></p>
-<div class="codehilite"><pre><span></span><code><span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;worldometers&quot;</span><span class="p">)</span>
+<p>by default <code>Covid</code> uses worldometers.info as default
+so you can use:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">covid</span> <span class="kn">import</span> <span class="n">covid</span>
+
+<span class="c1"># by default data source is &quot;worldometers&quot;</span>
+<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">()</span>
+
+<span class="c1"># or</span>
+
+<span class="n">covid</span> <span class="o">=</span> <span class="n">Covid</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;worldometers&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="check-the-source">Check the Source</h3>
