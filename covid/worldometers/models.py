@@ -4,13 +4,13 @@
 """
 from decimal import Decimal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class CovidModel(BaseModel):
     """Dataclass acts as a Model for Covid data"""
 
-    country: str = Field(..., alias="Country,Other")
+    country: str | int = Field(..., alias="Country,Other")
     total_cases: int = Field(0, alias="TotalCases")
     confirmed: int = Field(0, alias="TotalCases")
     new_cases: int = Field(0, alias="NewCases")
@@ -29,3 +29,7 @@ class CovidModel(BaseModel):
         Decimal(0), alias="Deaths/1M pop"
     )
     population: Decimal = Field(Decimal(0), alias="Population")
+
+    @field_validator("country")
+    def country_must_be_string(cls, value):
+        return str(value)

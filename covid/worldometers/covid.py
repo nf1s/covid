@@ -68,7 +68,9 @@ class Covid:
             list: List of country data
         """
         return [
-            CovidModel(**dict(zip(self.__headers, self.__format(val)))).dict()
+            CovidModel(
+                **dict(zip(self.__headers, self.__format(val)))
+            ).model_dump()
             for val in self.__data.values()
         ]
 
@@ -95,7 +97,7 @@ class Covid:
             raise ValueError(
                 f"There is no country called '{country_name}', to check available country names use `list_countries()`"
             )
-        return CovidModel(**country_data).dict()
+        return CovidModel(**country_data).model_dump()
 
     def list_countries(self) -> list:
         return list(self.__data.keys())
