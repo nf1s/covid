@@ -13,7 +13,7 @@ services = {
 }
 
 
-def Covid(source=config.JOHN_HOPKINS):
+def Covid(source=config.WORLDOMETERS):
     try:
         service = services[source]
         return service()
