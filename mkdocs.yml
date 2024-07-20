@@ -2,8 +2,8 @@ site_name: Covid
 nav:
   - Getting Started: index.md
   - Install: install.md
-  - John Hopkins University API: john_hopkins.md
   - Worldometers.info: worldometers.md
+  - John Hopkins University API (Deprecated) : john_hopkins.md
   - CLI (New): cli.md
 
 theme:

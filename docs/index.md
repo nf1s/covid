@@ -30,14 +30,15 @@ pip install covid
 ```python
 from covid import Covid
 
-# by default data source is "john_hopkins"
+# by default data source is "worldometers"
 covid = Covid()
 
 # or
-covid = Covid(source="john_hopkins")
 
-# to get data from worldometers.info
 covid = Covid(source="worldometers")
+
+# to get data from john hopkins (deprecated)
+covid = Covid(source="john_hopkins")
 
 # get all data
 covid.get_data()

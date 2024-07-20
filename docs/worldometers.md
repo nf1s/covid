@@ -1,6 +1,17 @@
 ![worldometers.png](img/worldometers.png)
 
+by default `Covid` uses worldometers.info as default
+so you can use:
+
+
 ```python
+from covid import covid
+
+# by default data source is "worldometers"
+covid = Covid()
+
+# or
+
 covid = Covid(source="worldometers")
 ```
 

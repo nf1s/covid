@@ -1,14 +1,5 @@
 ![john_hopkins.png](img/john_hopkins.png)
 
-by default `Covid` uses John Hopkins univeristy API as default
-so you can use:
-
-```python
-covid = Covid()
-```
-
-or
-
 ```python
 covid = Covid(source="john_hopkins")
 ```
@@ -30,7 +21,7 @@ result
 ```python
 from covid import Covid
 
-covid = Covid()
+covid = Covid(source="john_hopkins")
 covid.get_data()
 ```
 
