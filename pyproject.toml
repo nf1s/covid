@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "covid"
-version = "2.6.1"
+version = "3.0.0"
 authors = ["nf1s"]
 readme = "README.md"
 description = "Python package to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info"
