@@ -3,22 +3,21 @@
 ```bash
 covid --help
 ```
-#### John Hopkins source (default)
+#### Worldometers source (default)
 
 ```bash
 covid
 ```
-
 or
 
 ```bash
-covid -s john_hopkins
+covid -s worldometers
 ```
 
-#### Worldometers source
+#### John Hopkins source (deprecated)
 
 ```bash
-covid -s worldometers
+covid -s john_hopkins
 ```
 
 ### List Countries

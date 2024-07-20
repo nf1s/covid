@@ -158,7 +158,9 @@ class Covid:
             list[str]: list of country names
         """
         cases = self.__get_all_cases()
-        return [CountryModel(**case["attributes"]).dict() for case in cases]
+        return [
+            CountryModel(**case["attributes"]).model_dump() for case in cases
+        ]
 
     def get_status_by_country_id(self, country_id) -> dict:
         """Method fetches and returns specific country information related to coronavirus
@@ -182,7 +184,7 @@ class Covid:
         """
 
         case = self.__get_total_cases_by_country_id(country_id)
-        return CovidModel(**case).dict()
+        return CovidModel(**case).model_dump()
 
     def get_status_by_country_name(self, country_name) -> dict:
         """Method fetches and returns specific country information related to coronavirus
@@ -216,4 +218,4 @@ class Covid:
                 f"There is no country called '{country_name}', to check available country names use `list_countries()`"
             )
         case = self.__get_total_cases_by_country_id(country["id"])
-        return CovidModel(**case).dict()
+        return CovidModel(**case).model_dump()

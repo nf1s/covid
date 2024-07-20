@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "covid"
-version = "2.6.3"
+version = "3.0.0"
 authors = ["nf1s"]
 readme = "README.md"
 description = "Python package to get information regarding the novel corona virus provided by Johns Hopkins university and worldometers.info"
@@ -24,7 +24,7 @@ python = "^3.10"
 requests = "*"
 mkdocs = "*"
 mkdocs-material = "*"
-pydantic = "<2.0.0"
+pydantic = "*"
 beautifulsoup4 = "*"
 inflection = "*"
 bleach = ">=3.*"

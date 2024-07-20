@@ -17,7 +17,7 @@ app = typer.Typer()
 @app.command()
 def get_data(
     source: str = typer.Option(
-        "john_hopkins",
+        "worldometers",
         "-s",
         "--source",
         help="select source, 'john_hopkins' or  'worldometers'",
@@ -33,7 +33,7 @@ def get_data(
         None,
         "--option",
         "-o",
-        help="get total stats. options 'active', 'confimed', 'recovered' or 'deaths'",
+        help="get total stats. options 'active', 'confirmed', 'recovered' or 'deaths'",
     ),
     list_countries: bool = typer.Option(
         None,
